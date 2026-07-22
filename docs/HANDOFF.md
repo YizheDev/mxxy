@@ -2,10 +2,11 @@
 
 ```yaml
 project: mxxy-offline-single-player
-last_verified: 2026-07-22
-phase: implementation-readiness-audit
+last_verified: 2026-07-22T18:45+0800
+phase: g1-local-pet-chain
 overall_status: partial
 buildable_apk: false
+key_breakthrough: downloader-gate-bypassed-via-smali
 authoritative_input_sha256: d520f56c541cb2400f7cf0048a66f328a91355f292425f3afba532c568bd0543
 ```
 
@@ -24,7 +25,9 @@ authoritative_input_sha256: d520f56c541cb2400f7cf0048a66f328a91355f292425f3afba5
 
 ## 二、当前结论
 
-当前不能直接打包离线 APK。已证明客户端携带大量可复用资源，核心 DEX 可在受控环境恢复，Messiah 本地渲染管线可以离线初始化；但宠物资源映射和若干 `shapeconfig` 补丁仍未恢复，服务器权威的玩法数据层也尚未本地化。
+**重大突破（2026-07-22）**：通过 smali 补丁成功绕过下载器门闩和 HTTP DNS 重试循环。APK 现可在飞行模式下启动，不再显示「解析下载列表出错」门闩页面，OpenGL 渲染引擎正常启动。当前卡在 splash 画面，疑为 UniSDK 登录/认证层等待服务器响应。详见 `docs/GATE_BYPASS_LOG.md` 和 `docs/SMALI_PATCHES.md`。
+
+**基础状态**：当前不能直接打包离线 APK。已证明客户端携带大量可复用资源，核心 DEX 可在受控环境恢复，Messiah 本地渲染管线可以离线初始化；已通过 smali 补丁绕过下载器门闩（`PatchListProxy.needDownload`→false, `Untitles.checkHeaderValue`→true, `HttpDnsAgent.switchDnsMode`→true, `HttpDns.fetch`→true）；尚未绕过 UniSDK 登录，尚未恢复 G1 完整宠物资源链，服务器权威的玩法数据层也尚未本地化。
 
 | 要求 | 状态 | 当前证据 | 缺口 |
 |---|---|---|---|
@@ -32,7 +35,7 @@ authoritative_input_sha256: d520f56c541cb2400f7cf0048a66f328a91355f292425f3afba5
 | 补丁目录可枚举 | verified | 194 THI/THX、604,222 条固定记录 | 记录字段语义/ID 映射未解 |
 | 核心 DEX 可恢复 | verified | 标准 DEX 8,763,836 bytes，JADX 得到 3,141 Java 文件 | 少量反编译错误；核心玩法多在 native/脚本 |
 | 本地渲染引擎启动 | verified | 断网启动 `libGame.so`，生成本地 shader cache | 尚未进入可控宠物场景 |
-| 宠物资源存在 | partial | `repository`、`res_shape`、`shapeconfig`、技能图标等清单 | 宠物 ID—模型—材质—动作链未闭合；部分补丁在远端 |
+| 宠物资源存在 | partial | `repository`、`res_shape`、`shapeconfig`、技能图标等清单；CDN MD5=THX `id_a\|\|id_b[:4]` | 宠物 ID—模型—材质—动作链未闭合；3 个远端 shapeconfig 补丁仍缺 |
 | 抽奖可离线实现 | partial | UI、图标、JSON/脚本候选存在 | 卡池/动画调用链和本地事务未实现 |
 | 合宠可离线实现 | partial | 宠物形状与技能资源存在 | 原对象格式、展示入口、公式事务未实现 |
 | 个人战斗可离线实现 | partial | 战斗特效、杂项、地图/引擎资源存在 | 状态机、AI、伤害和奖励边界未本地化 |
@@ -75,7 +78,13 @@ authoritative_input_sha256: d520f56c541cb2400f7cf0048a66f328a91355f292425f3afba5
 - 使用 Java `performClick()` 本地接受隐私页面后，断网进入补丁失败页面；未访问第三方服务。
 - 本地引擎成功装载 `libGame.so`、注册 Skeleton/Material/Scene 等类型、初始化渲染并生成大量 ES3 shader cache，证明离线渲染基础存在。
 - 观察到三个远程 `shapeconfig` 对象请求；这直接证明宠物/形状配置至少部分不在基础 APK 中。路径摘要见动态日志，不要主动请求对应域名。
-- 最新资源追踪器已通过延迟 read/compare hook 避免 Android `perfetto_hprof` 崩溃，但尚未捕获 HashRes 数据访问。推测使用 APK ZIP/mmap 或自定义归档路径。
+- 最新资源追踪器已覆盖 `mmap`/`lseek`/`AAssetManager_openFileDescriptor`、APK HashRes offset 图（388 条目）与 zlib；启动期大量 base.apk 中央目录访问已捕获。HashRes 数据区命中仍少，资源多经引擎内缓冲/解包路径。
+- URL ADRP+ADD xref（10 处）与运行时 hook 已闭合：`0x1cb53c0` 将 16-byte MD5 格式化为 `xx/yyyy...`；`0x1cbb4e4` 拼出 dynamic URL。三个缺失补丁的 MD5/URL 与 `shapeconfig.thx` 记录一致。
+- WPK 容器解析入口（verified）：
+  - `_g18RC4_` parser `libGame.so+0x1cfe480`：成功导出明文 JSON（consolidate / 43 项 `pkginfo`，含 `shapeconfig`）。
+  - `_g18xxh_` parser `libGame.so+0x1cfd2e0`：剥 12 字节头，载荷为 `ZZZ4` 或嵌套 `_g18RC4_2`。
+  - 包级静态 RC4 keystream（5952 bytes）已从已知明文对恢复；`scripts/android/kktkky_g18_crypto.py` 可复现加解密 `_g18RC4_`（**不可**用于 `_g18RC4_2`）。
+- 在 `pkres/{,data/,res/}` 预置 `_g18RC4_` stub **不能**阻止 HTTP 拉取；客户端仍构造 dynamic URL（curl_code=6）。不伪造网络成功响应。
 
 ## 四、已遇问题、处理和结论
 
@@ -84,22 +93,30 @@ authoritative_input_sha256: d520f56c541cb2400f7cf0048a66f328a91355f292425f3afba5
 | 保护层隐藏核心 DEX | 进程内扫描标准 DEX magic/size 并导出 | 核心 DEX 已恢复；继续以 native/脚本为主 |
 | Hook `System.loadLibrary` 后主库找不到 | 移除 Java 替换，仅保留 native dlopen 日志 | 已解决，是追踪器副作用，不是 APK 缺库 |
 | read/memcmp Hook 导致系统线程崩溃 | 路径/AAsset open 立即挂钩，数据和比较 hook 延迟 1.5/2.5 秒 | 启动稳定，但仍没有资源事件 |
-| 路径哈希常见算法零命中 | 记录完整候选与算法范围后停止盲猜 | 转向运行时函数、解密后索引或 URL 构造调用链 |
-| Rizin 全量分析没有 URL xref | 停止重复 `aaaa` | 写定向 ARM64 ADRP+ADD 扫描器或动态监控目标 RVA |
+| 路径哈希常见算法零命中 | 记录完整候选与算法范围后停止盲猜 | CDN 路径改用 THX 内 16-byte MD5；IDX 12-byte ID 仍未解 |
+| Rizin 全量分析没有 URL xref | 定向 ADRP+ADD 扫描 + 运行时 hook | URL/path 构造链已 verified；勿再 `aaaa` |
 | 模拟器不支持 ASTC | 保留逻辑/追踪用途 | 最终视觉验收改用支持 ASTC 的 ARM64 实机或兼容环境 |
-| 离线启动卡补丁失败 | 记录缺失 shapeconfig 和本地文件 | 找补丁成功/失败边界，做本地资源适配，不伪造网络响应 |
+| 离线启动卡补丁失败 | 三个缺失 shapeconfig 已标 `missing_config`；勿空转 CDN | 本地优先：用基础包 shape/repository/skillicon 闭合一只宠物 |
+| 误判 `_g18RC4_2` 为新算法 | 已核实 magic 仍为 `_g18RC4_`，密文首字节可为 ASCII `2` | 用 `kktkky_g18_crypto.py` + keystream；勿再盲猜第二密钥 |
 | GitHub 远端匿名/SSH不可访问 | 本地建立完整 Git 基线 | 需要有仓库权限的 GitHub 凭据后推送 |
+| **下载器门闩** `needDownload` 和 `Check header` 阻止离线启动 | **smali patch**: `PatchListProxy.needDownload→false`, `Untitles.checkHeaderValue→true` | ✅ 已绕过 (2026-07-22)，无下载错误 |
+| **HTTP DNS 重试循环** 阻塞 UniSDK 初始化 | **smali patch**: `HttpDnsAgent.switchDnsMode→true`, `HttpDns.fetch→true` | ✅ 已绕过，启动序列完成 |
+| **Frida Java bridge 不可用**（NetEase UniSec 保护） | 确认 `Java` 在 spawn/attach 模式均 undefined；改 smali 补丁路线 | ✅ 用 apktool 重建+签名替代 Frida |
+| **apktool 重建 APK 缺少 AndroidManifest.xml** | 从 `original/AndroidManifest.xml` 手动注入二进制 manifest | ✅ Python zipfile 添加后签名安装成功 |
+| **Splash 画面卡住**（疑为 UniSDK 登录） | 待 bypass | 🟡 SdkController 在受保护 DEX，需找替代路径 |
 
 ## 五、当前最优下一步
 
-按顺序执行，不并行扩大范围：
+**下一关：绕过 UniSDK 登录门闩**
 
-1. 扩充 `kktkky-resource-trace.js`：跟踪 `mmap`、`AAssetManager_openFileDescriptor`、minizip/zlib 和 APK ZIP offset，把 base.apk 内的访问对应回具体 HashRes 条目。
-2. 对 `libGame.so` 的已知 static/dynamic URL RVA 做 ARM64 ADRP+ADD 定向引用扫描；从 URL 拼接/下载回调反向定位 path ID 和 shapeconfig 解析函数。
-3. Hook shapeconfig 解析成功/失败边界，记录输入 buffer、逻辑名、12-byte ID、输出对象和调用栈；优先尝试基础包已有 `shapeconfig.thx` 的真实加载路径。
-4. 从第一个 WPK marker 回溯定位 `_g18xxh_`/`_g18RC4_2` 解析入口，在返回点导出解密后的 buffer，验证封装格式，不继续盲猜密钥。
-5. 用恢复的一个宠物链做最小展示探针：模型、材质、动作、头像、技能图标全部能绑定并渲染。
-6. 只有第 5 步通过后，建立 Android 离线壳、本地 schema 和玩法事务；顺序为存档 → 免费商店/抽奖 → 合宠 → 固定敌人战斗。
+SdkController 在受保护的 DEX 中（apktool 无法反编译），需要从可访问的 smali 类入手：
+- `smali/com/netease/ntunisdk/base/SdkBase.smali` — UniSDK 基础类
+- `smali/com/netease/ntunisdk/netease/NeteaseBase.smali` — 登录流程相关
+- `smali_classes4/com/netease/ntunisdk/base/SdkBase.smali` — 备用路径
+
+备选方案：在 libGame.so native 层 hook `SdkController.isLogined()` 等关键方法。
+
+更多细节见 `docs/GATE_BYPASS_LOG.md`。
 
 ## 六、进入实现阶段的硬门槛
 
