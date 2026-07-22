@@ -1,0 +1,31 @@
+.DS_Store
+.idea/
+.vscode/
+.env
+.env.*
+!.env.example
+
+# Authorized input and regenerated private artifacts. Keep checksums/manifests only.
+input/
+runtime/
+work/
+build/
+dist/
+*.apk
+*.aab
+*.apks
+*.dex
+*.so
+*.wpk
+*.idx
+*.thi
+*.thx
+*.log
+*.hprof
+*.avd/
+
+# Tool caches and generated output.
+__pycache__/
+*.py[cod]
+node_modules/
+.pytest_cache/

@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.md text diff=markdown
+*.py text
+*.js text
+*.sh text
+Makefile text

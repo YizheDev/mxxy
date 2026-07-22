@@ -1,0 +1,5 @@
+# Authorized source and derived artifacts. Paths are logical, not local machine paths.
+d520f56c541cb2400f7cf0048a66f328a91355f292425f3afba532c568bd0543  kktkky-MXXY_M-1.563.apk
+8c4740aaaf0a134a875e2ded97f4f63d578c54209b82a3b8a273c8d8035ca355  runtime/unpacked-classes.private-format
+62de0096e2d045633af22effaf4c0c61cb726ba41500006833a4743305d3debc  runtime/core-classes.dex
+65fb150c91f4e625c31dd954da12fdbe92870bcfcb47eea5ac7b61bccf1e7f9a  lib/arm64-v8a/libGame.so
