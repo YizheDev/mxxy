@@ -1,0 +1,1654 @@
+{
+  "generated_at": "2026-07-22T17:12:14+0800",
+  "track": "B-static",
+  "img_codec": "XOR→ZZZ4/LZ4→ASTC5x5→PNG (track A verified; used as icon evidence)",
+  "candidate_shape_ids": [
+    4,
+    8,
+    15,
+    2131,
+    2139,
+    3014,
+    4058,
+    4068,
+    4085
+  ],
+  "remote_shapeconfig_missing": [
+    "8ba3208b364f1e51fe3e499cea0f1026",
+    "c4b00e0c05975f81d4025c0aa8212a9b",
+    "d9d4ea67004deafb19640d8e441ed182"
+  ],
+  "thx_vs_wpk": {
+    "repository": {
+      "thx": 60184,
+      "idx": 22978,
+      "delta_thx_minus_idx": 37206
+    },
+    "res_skillicon": {
+      "thx": 1700,
+      "idx": 1693,
+      "delta_thx_minus_idx": 7
+    },
+    "res_photo": {
+      "thx": 9752,
+      "idx": 3846,
+      "delta_thx_minus_idx": 5906
+    },
+    "res_2dshapes": {
+      "thx": 102,
+      "idx": 102,
+      "delta_thx_minus_idx": 0
+    },
+    "shapeconfig": {
+      "thx": 38138,
+      "idx": null,
+      "delta_thx_minus_idx": null
+    },
+    "res_shape": {
+      "thx": 19415,
+      "idx": null,
+      "delta_thx_minus_idx": null
+    }
+  },
+  "global_action_vocab": [
+    "stand",
+    "attack",
+    "guard",
+    "magic",
+    "rush",
+    "hit",
+    "walk"
+  ],
+  "decoded_skillicon_png_count": 12,
+  "decoded_portrait_png_count": 20,
+  "res_2dshapes_idx_count": 102,
+  "top_base_pack_candidates": [
+    {
+      "shape_id": 8,
+      "score": 141,
+      "coverage_status": "complete",
+      "coverage_status_strict": "partial_skill_unbound",
+      "device_priority_hint": "render_first",
+      "portrait_ref": "photo/portrait/8",
+      "model_sample": [
+        "0008.mtg"
+      ],
+      "skill_icon_pngs": 12,
+      "why": "base HashRes only; IMG skillicons decoded; portrait path in Json.idx; MESSIAH .mtg family present"
+    },
+    {
+      "shape_id": 4,
+      "score": 140,
+      "coverage_status": "complete",
+      "coverage_status_strict": "partial_skill_unbound",
+      "device_priority_hint": "render_first",
+      "portrait_ref": "photo/portrait/4",
+      "model_sample": [
+        "0004.mtg"
+      ],
+      "skill_icon_pngs": 12,
+      "why": "base HashRes only; IMG skillicons decoded; portrait path in Json.idx; MESSIAH .mtg family present"
+    },
+    {
+      "shape_id": 15,
+      "score": 139,
+      "coverage_status": "complete",
+      "coverage_status_strict": "partial_skill_unbound",
+      "device_priority_hint": "render_first",
+      "portrait_ref": "photo/portrait/15",
+      "model_sample": [
+        "0015.mtg"
+      ],
+      "skill_icon_pngs": 12,
+      "why": "base HashRes only; IMG skillicons decoded; portrait path in Json.idx; MESSIAH .mtg family present"
+    }
+  ],
+  "candidates": [
+    {
+      "species_id": 4,
+      "display_name": "local_shape_4",
+      "shape_id": 4,
+      "source_pack": "base_apk_hashres",
+      "coverage_status": "complete",
+      "missing": [],
+      "model_ref": {
+        "id12": "3e96409ffd35fb5928b90b4c",
+        "size": 526,
+        "kind": "other",
+        "frags": [
+          "0004.mtg"
+        ],
+        "evidence": "hashres/data/repository.idx#3e96409ffd35fb5928b90b4c"
+      },
+      "model_refs": [
+        {
+          "id12": "3e96409ffd35fb5928b90b4c",
+          "size": 526,
+          "kind": "other",
+          "frags": [
+            "0004.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#3e96409ffd35fb5928b90b4c"
+        },
+        {
+          "id12": "58281878b475ec01e4fd7349",
+          "size": 349,
+          "kind": "other",
+          "frags": [
+            "0004.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#58281878b475ec01e4fd7349"
+        },
+        {
+          "id12": "4426e40d50f07bed4d1abd13",
+          "size": 487,
+          "kind": "other",
+          "frags": [
+            "0004_02_01.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#4426e40d50f07bed4d1abd13"
+        },
+        {
+          "id12": "26efc6aca0c9c01de8f925c6",
+          "size": 659,
+          "kind": "other",
+          "frags": [
+            "0004_02_03.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#26efc6aca0c9c01de8f925c6"
+        },
+        {
+          "id12": "30639aeefd5119b91fc9eb44",
+          "size": 774,
+          "kind": "other",
+          "frags": [
+            "0004.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#30639aeefd5119b91fc9eb44"
+        },
+        {
+          "id12": "71e12434301e78e683c5028d",
+          "size": 859,
+          "kind": "other",
+          "frags": [
+            "0004.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#71e12434301e78e683c5028d"
+        },
+        {
+          "id12": "c2787a68ce38868a3dec5283",
+          "size": 464,
+          "kind": "other",
+          "frags": [
+            "0004.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#c2787a68ce38868a3dec5283"
+        },
+        {
+          "id12": "d68070e3390a9fdde6f7bc84",
+          "size": 513,
+          "kind": "other",
+          "frags": [
+            "0004.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#d68070e3390a9fdde6f7bc84"
+        },
+        {
+          "id12": "df7a9385ec59ca529bb26ee9",
+          "size": 464,
+          "kind": "other",
+          "frags": [
+            "0004.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#df7a9385ec59ca529bb26ee9"
+        },
+        {
+          "id12": "e5ef8f2b131a03ae3bfe0373",
+          "size": 823,
+          "kind": "other",
+          "frags": [
+            "0004000_mhe.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#e5ef8f2b131a03ae3bfe0373"
+        }
+      ],
+      "skeleton_ref": null,
+      "material_refs": [
+        {
+          "id12": "3e96409ffd35fb5928b90b4c",
+          "size": 526,
+          "kind": "other",
+          "frags": [
+            "0004.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#3e96409ffd35fb5928b90b4c"
+        },
+        {
+          "id12": "58281878b475ec01e4fd7349",
+          "size": 349,
+          "kind": "other",
+          "frags": [
+            "0004.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#58281878b475ec01e4fd7349"
+        },
+        {
+          "id12": "4426e40d50f07bed4d1abd13",
+          "size": 487,
+          "kind": "other",
+          "frags": [
+            "0004_02_01.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#4426e40d50f07bed4d1abd13"
+        },
+        {
+          "id12": "26efc6aca0c9c01de8f925c6",
+          "size": 659,
+          "kind": "other",
+          "frags": [
+            "0004_02_03.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#26efc6aca0c9c01de8f925c6"
+        },
+        {
+          "id12": "30639aeefd5119b91fc9eb44",
+          "size": 774,
+          "kind": "other",
+          "frags": [
+            "0004.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#30639aeefd5119b91fc9eb44"
+        },
+        {
+          "id12": "71e12434301e78e683c5028d",
+          "size": 859,
+          "kind": "other",
+          "frags": [
+            "0004.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#71e12434301e78e683c5028d"
+        },
+        {
+          "id12": "c2787a68ce38868a3dec5283",
+          "size": 464,
+          "kind": "other",
+          "frags": [
+            "0004.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#c2787a68ce38868a3dec5283"
+        },
+        {
+          "id12": "d68070e3390a9fdde6f7bc84",
+          "size": 513,
+          "kind": "other",
+          "frags": [
+            "0004.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#d68070e3390a9fdde6f7bc84"
+        }
+      ],
+      "idle_action": "stand",
+      "attack_action": "attack",
+      "hit_action": "hit",
+      "death_action": null,
+      "action_vocab_observed": [
+        "attack",
+        "guard",
+        "hit",
+        "magic",
+        "rush",
+        "stand",
+        "walk"
+      ],
+      "portrait_ref": {
+        "path": "photo/portrait/4",
+        "evidence": [
+          "hashres/data/Json.idx#6842b575a174819573dc8a90",
+          "hashres/data/Json.idx#18d4d2f618570b89075dde06",
+          "hashres/data/Json.idx#420988b45c9b321d96293555"
+        ],
+        "bound": true
+      },
+      "portrait_refs": [
+        {
+          "path": "photo/portrait/4",
+          "evidence": [
+            "hashres/data/Json.idx#6842b575a174819573dc8a90",
+            "hashres/data/Json.idx#18d4d2f618570b89075dde06",
+            "hashres/data/Json.idx#420988b45c9b321d96293555"
+          ],
+          "bound": true
+        },
+        {
+          "path": "photo/icon/4",
+          "bound": true
+        }
+      ],
+      "portrait_pool_decoded": [
+        "g1-local-evidence/pet_chain/portraits/259b04042690d47fbc6cea4f_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/2ca3efb76152143837bd165d_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/37a3c929064b362de968e9c2_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/4510c08727dc19da72fb4d37_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/479657c112c87bd75729e1f7_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/51db93bd7a49b99bf0575254_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/6faabb299ab66ed94d90b599_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/79569646a4a2a714a9df48b6_82x82.png"
+      ],
+      "skill_icon_refs": [
+        "g1-local-evidence/decoded/img_png/skillicon_012beae5072955aaaa7a4e30_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_18c4c8155e41fca99bbe3f53_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_3a492c083ffb82cb6522391b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_641025ea4583bd3c5f545795_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_7ddb9c8b7397c698d7ee87d4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_878d3b0b270fae0eb6cd36c4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_8ba3bbe247af0f75f2f28ce4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_951f32e9575336f06b17135b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_c56c395576799783cfb0c840_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_d93611a8a0912a802d383c91_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_ea396d6a3f8413d5a3d6e86e_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_fb5fd9ff51ca807b2948fdf8_tex_size_astc.png"
+      ],
+      "skill_bind_hints": [
+        {
+          "src": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/decrypt-dumps/infobeast.bin",
+          "win": "ZZZ4 LuaQ @auto/infobeast.lua"
+        },
+        {
+          "src": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__1b3e2db7465e35524b67daef.luac",
+          "win": "aSCORE SVR_LOW_SKILL_MAPV LOW_NEIDAN b_STAGE SPECIAL_ITEM_ITY9 UP_MODE_PROP, DHD_E^"
+        },
+        {
+          "src": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__1b3e2db7465e35524b67daef.luac",
+          "win": "easr 2set Particle dsetCur 2Nex@ clearNewMark %se! SkillLayout cImprov get* CValu1 2Btn sEvilMor UnderstandT \"Up"
+        },
+        {
+          "src": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__1b3e2db7465e35524b67daef.luac",
+          "win": "ndGuideDialog SuperBeast7 skillPopupwindowZ NonStatck ToNPCbtn OTip1 STips12 CTips sgNew"
+        }
+      ],
+      "path_templates": [
+        "3dshapes/0004",
+        "3dshapes/4",
+        "3dshapes\\0004",
+        "3dshapes/0004/",
+        "3dshapes/0004/100/",
+        "3dshapes/0004/90/",
+        "photo/portrait/0004",
+        "photo/portrait/4",
+        "photo/icon/0004"
+      ],
+      "path_string_hits": [
+        "3dshapes/0004/100/",
+        "3dshapes/0004"
+      ],
+      "evidence_paths": [
+        "hashres/data/Json.idx#6842b575a174819573dc8a90",
+        "hashres/data/Json.idx#18d4d2f618570b89075dde06",
+        "hashres/data/Json.idx#420988b45c9b321d96293555",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/3dshapes-path-strings.txt",
+        "hashres/data/repository.idx#3e96409ffd35fb5928b90b4c",
+        "hashres/data/repository.idx#58281878b475ec01e4fd7349",
+        "hashres/data/repository.idx#4426e40d50f07bed4d1abd13",
+        "hashres/data/repository.idx#26efc6aca0c9c01de8f925c6",
+        "hashres/data/repository.idx#30639aeefd5119b91fc9eb44",
+        "hashres/data/repository.idx#71e12434301e78e683c5028d",
+        "hashres/data/repository.idx#c2787a68ce38868a3dec5283",
+        "hashres/data/repository.idx#d68070e3390a9fdde6f7bc84",
+        "hashres/data/repository.idx#df7a9385ec59ca529bb26ee9",
+        "hashres/data/repository.idx#e5ef8f2b131a03ae3bfe0373",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/shape-script-hits.json",
+        "res_MsNonRepo.idx#f95772eb486a18797ccd3807",
+        "res_MsNonRepo.idx#3750c8373f57559b4fed439b",
+        "Json.idx#18d4d2f618570b89075dde06"
+      ],
+      "base_pack_closable": true,
+      "notes": "base_pack complete for device-first: MESSIAH model frags + Json portrait path `photo/portrait/4` + track-A decoded skillicon PNG pool. Species-bound skillicon map still unbound (strict=partial_skill_unbound).",
+      "device_priority_hint": "render_first",
+      "skill_icon_binding": "decoded_pool_unbound",
+      "coverage_status_base_pack": "complete",
+      "coverage_status_strict": "partial_skill_unbound"
+    },
+    {
+      "species_id": 8,
+      "display_name": "local_shape_8",
+      "shape_id": 8,
+      "source_pack": "base_apk_hashres",
+      "coverage_status": "complete",
+      "missing": [],
+      "model_ref": {
+        "id12": "1a4cf737304e1d3ff67cd546",
+        "size": 386,
+        "kind": "other",
+        "frags": [
+          "0008.mtg"
+        ],
+        "evidence": "hashres/data/repository.idx#1a4cf737304e1d3ff67cd546"
+      },
+      "model_refs": [
+        {
+          "id12": "1a4cf737304e1d3ff67cd546",
+          "size": 386,
+          "kind": "other",
+          "frags": [
+            "0008.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#1a4cf737304e1d3ff67cd546"
+        },
+        {
+          "id12": "78573fe2347c6fe8841a2650",
+          "size": 781,
+          "kind": "other",
+          "frags": [
+            "0008000_mhe.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#78573fe2347c6fe8841a2650"
+        },
+        {
+          "id12": "46b73b0d2a2fb72026b2d6b8",
+          "size": 544,
+          "kind": "other",
+          "frags": [
+            "0008002_mhe.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#46b73b0d2a2fb72026b2d6b8"
+        },
+        {
+          "id12": "c8b02006ee793c17fe9439c6",
+          "size": 581,
+          "kind": "other",
+          "frags": [
+            "0008.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#c8b02006ee793c17fe9439c6"
+        },
+        {
+          "id12": "0c96ee0c0ce7f18c2f557278",
+          "size": 781,
+          "kind": "other",
+          "frags": [
+            "0008005_mhe.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#0c96ee0c0ce7f18c2f557278"
+        },
+        {
+          "id12": "8e22c6a1e9d2e19dcd4d2351",
+          "size": 708,
+          "kind": "other",
+          "frags": [
+            "0008_02_03.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#8e22c6a1e9d2e19dcd4d2351"
+        },
+        {
+          "id12": "63d47e8b53847ef3d9bc5859",
+          "size": 625,
+          "kind": "other",
+          "frags": [
+            "0008.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#63d47e8b53847ef3d9bc5859"
+        },
+        {
+          "id12": "c609090ac81ec051847edcca",
+          "size": 526,
+          "kind": "other",
+          "frags": [
+            "0008.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#c609090ac81ec051847edcca"
+        },
+        {
+          "id12": "c7272692fc46e1d971fd3017",
+          "size": 470,
+          "kind": "other",
+          "frags": [
+            "0008000_mhe.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#c7272692fc46e1d971fd3017"
+        },
+        {
+          "id12": "ca77be8d0823bfc3e4e2b3e3",
+          "size": 454,
+          "kind": "other",
+          "frags": [
+            "0008_1.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#ca77be8d0823bfc3e4e2b3e3"
+        }
+      ],
+      "skeleton_ref": null,
+      "material_refs": [
+        {
+          "id12": "1a4cf737304e1d3ff67cd546",
+          "size": 386,
+          "kind": "other",
+          "frags": [
+            "0008.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#1a4cf737304e1d3ff67cd546"
+        },
+        {
+          "id12": "78573fe2347c6fe8841a2650",
+          "size": 781,
+          "kind": "other",
+          "frags": [
+            "0008000_mhe.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#78573fe2347c6fe8841a2650"
+        },
+        {
+          "id12": "46b73b0d2a2fb72026b2d6b8",
+          "size": 544,
+          "kind": "other",
+          "frags": [
+            "0008002_mhe.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#46b73b0d2a2fb72026b2d6b8"
+        },
+        {
+          "id12": "c8b02006ee793c17fe9439c6",
+          "size": 581,
+          "kind": "other",
+          "frags": [
+            "0008.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#c8b02006ee793c17fe9439c6"
+        },
+        {
+          "id12": "0c96ee0c0ce7f18c2f557278",
+          "size": 781,
+          "kind": "other",
+          "frags": [
+            "0008005_mhe.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#0c96ee0c0ce7f18c2f557278"
+        },
+        {
+          "id12": "8e22c6a1e9d2e19dcd4d2351",
+          "size": 708,
+          "kind": "other",
+          "frags": [
+            "0008_02_03.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#8e22c6a1e9d2e19dcd4d2351"
+        },
+        {
+          "id12": "63d47e8b53847ef3d9bc5859",
+          "size": 625,
+          "kind": "other",
+          "frags": [
+            "0008.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#63d47e8b53847ef3d9bc5859"
+        },
+        {
+          "id12": "c609090ac81ec051847edcca",
+          "size": 526,
+          "kind": "other",
+          "frags": [
+            "0008.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#c609090ac81ec051847edcca"
+        }
+      ],
+      "idle_action": "stand",
+      "attack_action": "attack",
+      "hit_action": "hit",
+      "death_action": null,
+      "action_vocab_observed": [
+        "attack",
+        "guard",
+        "hit",
+        "magic",
+        "rush",
+        "stand",
+        "walk"
+      ],
+      "portrait_ref": {
+        "path": "photo/portrait/8",
+        "evidence": [
+          "hashres/data/Json.idx#606fff02383e51dfcc4727e2"
+        ],
+        "bound": true
+      },
+      "portrait_refs": [
+        {
+          "path": "photo/portrait/8",
+          "evidence": [
+            "hashres/data/Json.idx#606fff02383e51dfcc4727e2"
+          ],
+          "bound": true
+        }
+      ],
+      "portrait_pool_decoded": [
+        "g1-local-evidence/pet_chain/portraits/259b04042690d47fbc6cea4f_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/2ca3efb76152143837bd165d_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/37a3c929064b362de968e9c2_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/4510c08727dc19da72fb4d37_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/479657c112c87bd75729e1f7_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/51db93bd7a49b99bf0575254_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/6faabb299ab66ed94d90b599_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/79569646a4a2a714a9df48b6_82x82.png"
+      ],
+      "skill_icon_refs": [
+        "g1-local-evidence/decoded/img_png/skillicon_012beae5072955aaaa7a4e30_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_18c4c8155e41fca99bbe3f53_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_3a492c083ffb82cb6522391b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_641025ea4583bd3c5f545795_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_7ddb9c8b7397c698d7ee87d4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_878d3b0b270fae0eb6cd36c4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_8ba3bbe247af0f75f2f28ce4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_951f32e9575336f06b17135b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_c56c395576799783cfb0c840_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_d93611a8a0912a802d383c91_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_ea396d6a3f8413d5a3d6e86e_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_fb5fd9ff51ca807b2948fdf8_tex_size_astc.png"
+      ],
+      "skill_bind_hints": [
+        {
+          "src": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/decrypt-dumps/infobeast.bin",
+          "win": "rawgetName 9Typ uRare aMerit FightGrade]K iGrowupY 8ZZZ *WF BaseSkillsx HFrom HDesc HLifeX UniqueDrug ROrder"
+        },
+        {
+          "src": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/decrypt-dumps/infobeast.luac",
+          "win": "rawgetName 9Typ uRare aMerit FightGrade]K iGrowupY 8ZZZ *WF BaseSkillsx HFrom HDesc HLifeX UniqueDrug ROrder"
+        },
+        {
+          "src": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__1b3e2db7465e35524b67daef.luac",
+          "win": "RLevel aAdjustN ?ren3 uSumInfo bChange 6Seg !By@ MOpen WithSameKind SetScrollDi HEAD_ICO} GetHeadIcon"
+        },
+        {
+          "src": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__1b3e2db7465e35524b67daef.luac",
+          "win": "S_# PAOPAO_EMOJI dXCHANG 2GOT, #UP= S_CONFIN= __LIST DINFOS SHOW_EFFECTj SUM_PACKAG: LIMITEDSU3 BITEMY C_BEAST) T_OPENO BRATE UCLICK>"
+        }
+      ],
+      "path_templates": [
+        "3dshapes/0008",
+        "3dshapes/8",
+        "3dshapes\\0008",
+        "3dshapes/0008/",
+        "3dshapes/0008/100/",
+        "3dshapes/0008/90/",
+        "photo/portrait/0008",
+        "photo/portrait/8",
+        "photo/icon/0008"
+      ],
+      "path_string_hits": [
+        "3dshapes/0008/07/fx_niao",
+        "08/05/0008X",
+        "3dshapes/0008"
+      ],
+      "evidence_paths": [
+        "hashres/data/Json.idx#606fff02383e51dfcc4727e2",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/3dshapes-path-strings.txt",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/datas_shape3dmap.strings.txt",
+        "hashres/data/repository.idx#1a4cf737304e1d3ff67cd546",
+        "hashres/data/repository.idx#78573fe2347c6fe8841a2650",
+        "hashres/data/repository.idx#46b73b0d2a2fb72026b2d6b8",
+        "hashres/data/repository.idx#c8b02006ee793c17fe9439c6",
+        "hashres/data/repository.idx#0c96ee0c0ce7f18c2f557278",
+        "hashres/data/repository.idx#8e22c6a1e9d2e19dcd4d2351",
+        "hashres/data/repository.idx#63d47e8b53847ef3d9bc5859",
+        "hashres/data/repository.idx#c609090ac81ec051847edcca",
+        "hashres/data/repository.idx#c7272692fc46e1d971fd3017",
+        "hashres/data/repository.idx#ca77be8d0823bfc3e4e2b3e3",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/shape-script-hits.json",
+        "res_MsNonRepo.idx#c417bd3cd809daab9315e156"
+      ],
+      "base_pack_closable": true,
+      "notes": "base_pack complete for device-first: MESSIAH model frags + Json portrait path `photo/portrait/8` + track-A decoded skillicon PNG pool. Species-bound skillicon map still unbound (strict=partial_skill_unbound).",
+      "device_priority_hint": "render_first",
+      "coverage_status_base_pack": "complete",
+      "coverage_status_strict": "partial_skill_unbound",
+      "skill_icon_binding": "decoded_pool_unbound"
+    },
+    {
+      "species_id": 15,
+      "display_name": "local_shape_15",
+      "shape_id": 15,
+      "source_pack": "base_apk_hashres",
+      "coverage_status": "complete",
+      "missing": [],
+      "model_ref": {
+        "id12": "96a403e4b15e6ac0c60c2f6f",
+        "size": 525,
+        "kind": "other",
+        "frags": [
+          "0015.mtg"
+        ],
+        "evidence": "hashres/data/repository.idx#96a403e4b15e6ac0c60c2f6f"
+      },
+      "model_refs": [
+        {
+          "id12": "96a403e4b15e6ac0c60c2f6f",
+          "size": 525,
+          "kind": "other",
+          "frags": [
+            "0015.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#96a403e4b15e6ac0c60c2f6f"
+        },
+        {
+          "id12": "a3c1f74f4ac3f323b050abd3",
+          "size": 303,
+          "kind": "other",
+          "frags": [
+            "0015.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#a3c1f74f4ac3f323b050abd3"
+        },
+        {
+          "id12": "f87bcc91ea8f051eb5da2538",
+          "size": 404,
+          "kind": "other",
+          "frags": [
+            "0015.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#f87bcc91ea8f051eb5da2538"
+        },
+        {
+          "id12": "ed9638b44018f4628769eeaf",
+          "size": 406,
+          "kind": "other",
+          "frags": [
+            "0015_r.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#ed9638b44018f4628769eeaf"
+        },
+        {
+          "id12": "25d5a918bb97196cfc608384",
+          "size": 412,
+          "kind": "other",
+          "frags": [
+            "0015_r_03_01.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#25d5a918bb97196cfc608384"
+        },
+        {
+          "id12": "e3a635db587707bf631a9f53",
+          "size": 677,
+          "kind": "other",
+          "frags": [
+            "0015.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#e3a635db587707bf631a9f53"
+        },
+        {
+          "id12": "965fd179c1b0df873ce5e4f8",
+          "size": 541,
+          "kind": "other",
+          "frags": [
+            "0015.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#965fd179c1b0df873ce5e4f8"
+        },
+        {
+          "id12": "167b3ceb30d05095593b6976",
+          "size": 845,
+          "kind": "other",
+          "frags": [
+            "0015_l_03_03.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#167b3ceb30d05095593b6976"
+        },
+        {
+          "id12": "d899e27d8b5a5287ccfb28fa",
+          "size": 465,
+          "kind": "other",
+          "frags": [
+            "0015.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#d899e27d8b5a5287ccfb28fa"
+        },
+        {
+          "id12": "de4a005b8a2af02e9cdb07fc",
+          "size": 618,
+          "kind": "other",
+          "frags": [
+            "0015003_mhe.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#de4a005b8a2af02e9cdb07fc"
+        }
+      ],
+      "skeleton_ref": null,
+      "material_refs": [
+        {
+          "id12": "96a403e4b15e6ac0c60c2f6f",
+          "size": 525,
+          "kind": "other",
+          "frags": [
+            "0015.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#96a403e4b15e6ac0c60c2f6f"
+        },
+        {
+          "id12": "a3c1f74f4ac3f323b050abd3",
+          "size": 303,
+          "kind": "other",
+          "frags": [
+            "0015.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#a3c1f74f4ac3f323b050abd3"
+        },
+        {
+          "id12": "f87bcc91ea8f051eb5da2538",
+          "size": 404,
+          "kind": "other",
+          "frags": [
+            "0015.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#f87bcc91ea8f051eb5da2538"
+        },
+        {
+          "id12": "ed9638b44018f4628769eeaf",
+          "size": 406,
+          "kind": "other",
+          "frags": [
+            "0015_r.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#ed9638b44018f4628769eeaf"
+        },
+        {
+          "id12": "25d5a918bb97196cfc608384",
+          "size": 412,
+          "kind": "other",
+          "frags": [
+            "0015_r_03_01.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#25d5a918bb97196cfc608384"
+        },
+        {
+          "id12": "e3a635db587707bf631a9f53",
+          "size": 677,
+          "kind": "other",
+          "frags": [
+            "0015.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#e3a635db587707bf631a9f53"
+        },
+        {
+          "id12": "965fd179c1b0df873ce5e4f8",
+          "size": 541,
+          "kind": "other",
+          "frags": [
+            "0015.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#965fd179c1b0df873ce5e4f8"
+        },
+        {
+          "id12": "167b3ceb30d05095593b6976",
+          "size": 845,
+          "kind": "other",
+          "frags": [
+            "0015_l_03_03.mtg"
+          ],
+          "evidence": "hashres/data/repository.idx#167b3ceb30d05095593b6976"
+        }
+      ],
+      "idle_action": "stand",
+      "attack_action": "attack",
+      "hit_action": "hit",
+      "death_action": null,
+      "action_vocab_observed": [
+        "attack",
+        "guard",
+        "hit",
+        "magic",
+        "rush",
+        "stand",
+        "walk"
+      ],
+      "portrait_ref": {
+        "path": "photo/portrait/15",
+        "evidence": [
+          "hashres/data/Json.idx#1a3c56ef507adb6e20979090",
+          "hashres/data/Json.idx#3294c589e220e6e0526932be",
+          "hashres/data/Json.idx#ba6df5efaad213c5cf95dbe9"
+        ],
+        "bound": true
+      },
+      "portrait_refs": [
+        {
+          "path": "photo/portrait/15",
+          "evidence": [
+            "hashres/data/Json.idx#1a3c56ef507adb6e20979090",
+            "hashres/data/Json.idx#3294c589e220e6e0526932be",
+            "hashres/data/Json.idx#ba6df5efaad213c5cf95dbe9"
+          ],
+          "bound": true
+        },
+        {
+          "path": "photo/icon/15",
+          "bound": true
+        }
+      ],
+      "portrait_pool_decoded": [
+        "g1-local-evidence/pet_chain/portraits/259b04042690d47fbc6cea4f_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/2ca3efb76152143837bd165d_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/37a3c929064b362de968e9c2_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/4510c08727dc19da72fb4d37_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/479657c112c87bd75729e1f7_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/51db93bd7a49b99bf0575254_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/6faabb299ab66ed94d90b599_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/79569646a4a2a714a9df48b6_82x82.png"
+      ],
+      "skill_icon_refs": [
+        "g1-local-evidence/decoded/img_png/skillicon_012beae5072955aaaa7a4e30_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_18c4c8155e41fca99bbe3f53_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_3a492c083ffb82cb6522391b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_641025ea4583bd3c5f545795_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_7ddb9c8b7397c698d7ee87d4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_878d3b0b270fae0eb6cd36c4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_8ba3bbe247af0f75f2f28ce4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_951f32e9575336f06b17135b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_c56c395576799783cfb0c840_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_d93611a8a0912a802d383c91_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_ea396d6a3f8413d5a3d6e86e_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_fb5fd9ff51ca807b2948fdf8_tex_size_astc.png"
+      ],
+      "skill_bind_hints": [
+        {
+          "src": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__4642d36102a6bfe7340cb356.luac",
+          "win": "Bview abeasti ngeSkillItemImag#mQPanel 1Img 2Bkg bPetLv1 getVirtualRendere OLOR_COST_NORMAL_OUTLINE d<RColorY %se galKern3"
+        },
+        {
+          "src": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__2377f52fb12fd77d682528ad.luac",
+          "win": "rcc PATH_SKILL_ADD r.reddot} bindUI rNew8015I isAutoSendC u+* 3WeaD4 \"Ws/ AShow"
+        }
+      ],
+      "path_templates": [
+        "3dshapes/0015",
+        "3dshapes/15",
+        "3dshapes\\0015",
+        "3dshapes/0015/",
+        "3dshapes/0015/100/",
+        "3dshapes/0015/90/",
+        "photo/portrait/0015",
+        "photo/portrait/15",
+        "photo/icon/0015"
+      ],
+      "path_string_hits": [
+        "0015/90/172"
+      ],
+      "evidence_paths": [
+        "hashres/data/Json.idx#1a3c56ef507adb6e20979090",
+        "hashres/data/Json.idx#3294c589e220e6e0526932be",
+        "hashres/data/Json.idx#ba6df5efaad213c5cf95dbe9",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/datas_shape3dmap.strings.txt",
+        "hashres/data/repository.idx#96a403e4b15e6ac0c60c2f6f",
+        "hashres/data/repository.idx#a3c1f74f4ac3f323b050abd3",
+        "hashres/data/repository.idx#f87bcc91ea8f051eb5da2538",
+        "hashres/data/repository.idx#ed9638b44018f4628769eeaf",
+        "hashres/data/repository.idx#25d5a918bb97196cfc608384",
+        "hashres/data/repository.idx#e3a635db587707bf631a9f53",
+        "hashres/data/repository.idx#965fd179c1b0df873ce5e4f8",
+        "hashres/data/repository.idx#167b3ceb30d05095593b6976",
+        "hashres/data/repository.idx#d899e27d8b5a5287ccfb28fa",
+        "hashres/data/repository.idx#de4a005b8a2af02e9cdb07fc",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/shape-script-hits.json",
+        "Json.idx#1a3c56ef507adb6e20979090",
+        "Json.idx#3294c589e220e6e0526932be",
+        "Json.idx#ba6df5efaad213c5cf95dbe9"
+      ],
+      "base_pack_closable": true,
+      "notes": "base_pack complete for device-first: MESSIAH model frags + Json portrait path `photo/portrait/15` + track-A decoded skillicon PNG pool. Species-bound skillicon map still unbound (strict=partial_skill_unbound).",
+      "device_priority_hint": "render_first",
+      "skill_icon_binding": "decoded_pool_unbound",
+      "coverage_status_base_pack": "complete",
+      "coverage_status_strict": "partial_skill_unbound"
+    },
+    {
+      "species_id": 2131,
+      "display_name": "local_shape_2131",
+      "shape_id": 2131,
+      "source_pack": "base_apk_hashres",
+      "coverage_status": "missing_model+missing_icon",
+      "missing": [
+        "missing_model",
+        "missing_icon"
+      ],
+      "model_ref": null,
+      "model_refs": [],
+      "skeleton_ref": null,
+      "material_refs": [],
+      "idle_action": null,
+      "attack_action": null,
+      "hit_action": null,
+      "death_action": null,
+      "action_vocab_observed": [],
+      "portrait_ref": null,
+      "portrait_refs": [],
+      "portrait_pool_decoded": [
+        "g1-local-evidence/pet_chain/portraits/259b04042690d47fbc6cea4f_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/2ca3efb76152143837bd165d_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/37a3c929064b362de968e9c2_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/4510c08727dc19da72fb4d37_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/479657c112c87bd75729e1f7_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/51db93bd7a49b99bf0575254_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/6faabb299ab66ed94d90b599_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/79569646a4a2a714a9df48b6_82x82.png"
+      ],
+      "skill_icon_refs": [
+        "g1-local-evidence/decoded/img_png/skillicon_012beae5072955aaaa7a4e30_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_18c4c8155e41fca99bbe3f53_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_3a492c083ffb82cb6522391b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_641025ea4583bd3c5f545795_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_7ddb9c8b7397c698d7ee87d4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_878d3b0b270fae0eb6cd36c4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_8ba3bbe247af0f75f2f28ce4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_951f32e9575336f06b17135b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_c56c395576799783cfb0c840_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_d93611a8a0912a802d383c91_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_ea396d6a3f8413d5a3d6e86e_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_fb5fd9ff51ca807b2948fdf8_tex_size_astc.png"
+      ],
+      "skill_bind_hints": [],
+      "path_templates": [
+        "3dshapes/2131",
+        "3dshapes/2131",
+        "3dshapes\\2131",
+        "3dshapes/2131/",
+        "3dshapes/2131/100/",
+        "3dshapes/2131/90/",
+        "photo/portrait/2131",
+        "photo/portrait/2131",
+        "photo/icon/2131"
+      ],
+      "path_string_hits": [
+        "2131/02/2131_l"
+      ],
+      "evidence_paths": [
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/datas_shape3dmap.strings.txt",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/shape-script-hits.json"
+      ],
+      "base_pack_closable": false,
+      "notes": "portrait pool decoded but not species-bound; skillicon pool decoded (track A IMG) but not species-bound; ",
+      "device_priority_hint": "low",
+      "coverage_status_base_pack": "missing_model+missing_icon",
+      "coverage_status_strict": "missing_model+missing_icon"
+    },
+    {
+      "species_id": 2139,
+      "display_name": "local_shape_2139",
+      "shape_id": 2139,
+      "source_pack": "base_apk_hashres",
+      "coverage_status": "missing_model",
+      "missing": [
+        "missing_model"
+      ],
+      "model_ref": null,
+      "model_refs": [],
+      "skeleton_ref": null,
+      "material_refs": [
+        {
+          "id12": "a2f7abbdad95b3fdd505f4a8",
+          "size": 714,
+          "kind": "other",
+          "frags": [
+            "Tex0=cc6f844d-0b87-41a6-999f-df6bea2139a8*"
+          ],
+          "evidence": "hashres/data/repository.idx#a2f7abbdad95b3fdd505f4a8"
+        }
+      ],
+      "idle_action": null,
+      "attack_action": null,
+      "hit_action": null,
+      "death_action": null,
+      "action_vocab_observed": [],
+      "portrait_ref": {
+        "path": "photo/portrait/2139",
+        "evidence": [
+          "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+          "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits"
+        ]
+      },
+      "portrait_refs": [
+        {
+          "path": "photo/portrait/2139",
+          "evidence": [
+            "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+            "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits"
+          ]
+        },
+        {
+          "path": "portrait/2139.png",
+          "evidence": [
+            "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+            "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits"
+          ]
+        }
+      ],
+      "portrait_pool_decoded": [
+        "g1-local-evidence/pet_chain/portraits/259b04042690d47fbc6cea4f_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/2ca3efb76152143837bd165d_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/37a3c929064b362de968e9c2_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/4510c08727dc19da72fb4d37_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/479657c112c87bd75729e1f7_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/51db93bd7a49b99bf0575254_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/6faabb299ab66ed94d90b599_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/79569646a4a2a714a9df48b6_82x82.png"
+      ],
+      "skill_icon_refs": [
+        "g1-local-evidence/decoded/img_png/skillicon_012beae5072955aaaa7a4e30_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_18c4c8155e41fca99bbe3f53_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_3a492c083ffb82cb6522391b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_641025ea4583bd3c5f545795_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_7ddb9c8b7397c698d7ee87d4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_878d3b0b270fae0eb6cd36c4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_8ba3bbe247af0f75f2f28ce4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_951f32e9575336f06b17135b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_c56c395576799783cfb0c840_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_d93611a8a0912a802d383c91_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_ea396d6a3f8413d5a3d6e86e_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_fb5fd9ff51ca807b2948fdf8_tex_size_astc.png"
+      ],
+      "skill_bind_hints": [
+        {
+          "source": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__f892f3a0d4b511727d0a521e.luac",
+          "window": "ImgPhoto1 photo/portrait/2139.png"
+        },
+        {
+          "src": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__f892f3a0d4b511727d0a521e.luac",
+          "win": "tPnlNpc ImgPhoto1 photo/portrait/2139.png"
+        },
+        {
+          "src": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__f892f3a0d4b511727d0a521e.luac",
+          "win": "tPnlNpc ImgPhoto1 photo/portrait/2139.png"
+        }
+      ],
+      "path_templates": [
+        "3dshapes/2139",
+        "3dshapes/2139",
+        "3dshapes\\2139",
+        "3dshapes/2139/",
+        "3dshapes/2139/100/",
+        "3dshapes/2139/90/",
+        "photo/portrait/2139",
+        "photo/portrait/2139",
+        "photo/icon/2139"
+      ],
+      "path_string_hits": [],
+      "evidence_paths": [
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/shape-script-hits.json",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__f892f3a0d4b511727d0a521e.luac"
+      ],
+      "base_pack_closable": false,
+      "notes": "",
+      "device_priority_hint": "low",
+      "coverage_status_base_pack": "missing_model",
+      "coverage_status_strict": "partial_skill_unbound"
+    },
+    {
+      "species_id": 3014,
+      "display_name": "local_shape_3014",
+      "shape_id": 3014,
+      "source_pack": "base_apk_hashres",
+      "coverage_status": "missing_model",
+      "missing": [
+        "missing_model"
+      ],
+      "model_ref": null,
+      "model_refs": [],
+      "skeleton_ref": null,
+      "material_refs": [
+        {
+          "id12": "e336b4fd7453c142641add6f",
+          "size": 795,
+          "kind": "other",
+          "frags": [
+            "TexMetallic=9e042eb8-d7cb-4c69-9f98-cd7d301446c2"
+          ],
+          "evidence": "hashres/data/repository.idx#e336b4fd7453c142641add6f"
+        }
+      ],
+      "idle_action": null,
+      "attack_action": null,
+      "hit_action": null,
+      "death_action": null,
+      "action_vocab_observed": [],
+      "portrait_ref": {
+        "path": "photo/portrait/3014",
+        "evidence": [
+          "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+          "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits"
+        ]
+      },
+      "portrait_refs": [
+        {
+          "path": "photo/portrait/3014",
+          "evidence": [
+            "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+            "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits"
+          ]
+        },
+        {
+          "path": "portrait/3014",
+          "evidence": [
+            "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+            "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits"
+          ]
+        }
+      ],
+      "portrait_pool_decoded": [
+        "g1-local-evidence/pet_chain/portraits/259b04042690d47fbc6cea4f_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/2ca3efb76152143837bd165d_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/37a3c929064b362de968e9c2_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/4510c08727dc19da72fb4d37_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/479657c112c87bd75729e1f7_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/51db93bd7a49b99bf0575254_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/6faabb299ab66ed94d90b599_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/79569646a4a2a714a9df48b6_82x82.png"
+      ],
+      "skill_icon_refs": [
+        "g1-local-evidence/decoded/img_png/skillicon_012beae5072955aaaa7a4e30_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_18c4c8155e41fca99bbe3f53_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_3a492c083ffb82cb6522391b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_641025ea4583bd3c5f545795_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_7ddb9c8b7397c698d7ee87d4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_878d3b0b270fae0eb6cd36c4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_8ba3bbe247af0f75f2f28ce4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_951f32e9575336f06b17135b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_c56c395576799783cfb0c840_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_d93611a8a0912a802d383c91_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_ea396d6a3f8413d5a3d6e86e_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_fb5fd9ff51ca807b2948fdf8_tex_size_astc.png"
+      ],
+      "skill_bind_hints": [
+        {
+          "source": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__a6ecebce446e63eadd38e48d.luac",
+          "window": "ImgNpc res/photo/portrait/3014!n bLblNpcl*N 2538n"
+        },
+        {
+          "source": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_infoshapemap_38996b624a3ce641dd91b348.luac",
+          "window": "16e2f1b8614f57e4a0101574UFc5wEFI 30149a51457f03ae61b4HQkShtpoI 1128 c3082885e85SaBJxvRJI"
+        },
+        {
+          "src": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__a6ecebce446e63eadd38e48d.luac",
+          "win": "ImgNpc res/photo/portrait/3014!n bLblNpcl*N 2538n !426"
+        },
+        {
+          "src": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__a6ecebce446e63eadd38e48d.luac",
+          "win": "ImgNpc res/photo/portrait/3014!n bLblNpcl*N 2538n !426"
+        }
+      ],
+      "path_templates": [
+        "3dshapes/3014",
+        "3dshapes/3014",
+        "3dshapes\\3014",
+        "3dshapes/3014/",
+        "3dshapes/3014/100/",
+        "3dshapes/3014/90/",
+        "photo/portrait/3014",
+        "photo/portrait/3014",
+        "photo/icon/3014"
+      ],
+      "path_string_hits": [],
+      "evidence_paths": [
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/shape-script-hits.json",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_beast__a6ecebce446e63eadd38e48d.luac"
+      ],
+      "base_pack_closable": false,
+      "notes": "",
+      "device_priority_hint": "low",
+      "coverage_status_base_pack": "missing_model",
+      "coverage_status_strict": "partial_skill_unbound"
+    },
+    {
+      "species_id": 4058,
+      "display_name": "local_shape_4058",
+      "shape_id": 4058,
+      "source_pack": "base_apk_hashres",
+      "coverage_status": "missing_model+missing_icon",
+      "missing": [
+        "missing_model",
+        "missing_icon"
+      ],
+      "model_ref": null,
+      "model_refs": [],
+      "skeleton_ref": null,
+      "material_refs": [],
+      "idle_action": null,
+      "attack_action": null,
+      "hit_action": null,
+      "death_action": null,
+      "action_vocab_observed": [],
+      "portrait_ref": null,
+      "portrait_refs": [],
+      "portrait_pool_decoded": [
+        "g1-local-evidence/pet_chain/portraits/259b04042690d47fbc6cea4f_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/2ca3efb76152143837bd165d_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/37a3c929064b362de968e9c2_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/4510c08727dc19da72fb4d37_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/479657c112c87bd75729e1f7_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/51db93bd7a49b99bf0575254_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/6faabb299ab66ed94d90b599_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/79569646a4a2a714a9df48b6_82x82.png"
+      ],
+      "skill_icon_refs": [
+        "g1-local-evidence/decoded/img_png/skillicon_012beae5072955aaaa7a4e30_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_18c4c8155e41fca99bbe3f53_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_3a492c083ffb82cb6522391b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_641025ea4583bd3c5f545795_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_7ddb9c8b7397c698d7ee87d4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_878d3b0b270fae0eb6cd36c4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_8ba3bbe247af0f75f2f28ce4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_951f32e9575336f06b17135b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_c56c395576799783cfb0c840_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_d93611a8a0912a802d383c91_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_ea396d6a3f8413d5a3d6e86e_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_fb5fd9ff51ca807b2948fdf8_tex_size_astc.png"
+      ],
+      "skill_bind_hints": [],
+      "path_templates": [
+        "3dshapes/4058",
+        "3dshapes/4058",
+        "3dshapes\\4058",
+        "3dshapes/4058/",
+        "3dshapes/4058/100/",
+        "3dshapes/4058/90/",
+        "photo/portrait/4058",
+        "photo/portrait/4058",
+        "photo/icon/4058"
+      ],
+      "path_string_hits": [
+        "3dshapes/4058"
+      ],
+      "evidence_paths": [
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/shape-script-hits.json",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_3dshapes_2d347011c53a2d487e505107.luac",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_3dshapes_e30e01c1fcf271c8288d7345.luac",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_3dshapes_89ddc488428ef6ab3a8f2cd0.luac",
+        "script.idx#89ddc488428ef6ab3a8f2cd0"
+      ],
+      "base_pack_closable": false,
+      "notes": "portrait pool decoded but not species-bound; skillicon pool decoded (track A IMG) but not species-bound; ",
+      "device_priority_hint": "low",
+      "coverage_status_base_pack": "missing_model+missing_icon",
+      "coverage_status_strict": "missing_model+missing_icon"
+    },
+    {
+      "species_id": 4068,
+      "display_name": "local_shape_4068",
+      "shape_id": 4068,
+      "source_pack": "base_apk_hashres",
+      "coverage_status": "missing_model+missing_icon",
+      "missing": [
+        "missing_model",
+        "missing_icon"
+      ],
+      "model_ref": null,
+      "model_refs": [],
+      "skeleton_ref": null,
+      "material_refs": [],
+      "idle_action": null,
+      "attack_action": null,
+      "hit_action": null,
+      "death_action": null,
+      "action_vocab_observed": [],
+      "portrait_ref": null,
+      "portrait_refs": [],
+      "portrait_pool_decoded": [
+        "g1-local-evidence/pet_chain/portraits/259b04042690d47fbc6cea4f_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/2ca3efb76152143837bd165d_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/37a3c929064b362de968e9c2_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/4510c08727dc19da72fb4d37_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/479657c112c87bd75729e1f7_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/51db93bd7a49b99bf0575254_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/6faabb299ab66ed94d90b599_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/79569646a4a2a714a9df48b6_82x82.png"
+      ],
+      "skill_icon_refs": [
+        "g1-local-evidence/decoded/img_png/skillicon_012beae5072955aaaa7a4e30_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_18c4c8155e41fca99bbe3f53_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_3a492c083ffb82cb6522391b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_641025ea4583bd3c5f545795_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_7ddb9c8b7397c698d7ee87d4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_878d3b0b270fae0eb6cd36c4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_8ba3bbe247af0f75f2f28ce4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_951f32e9575336f06b17135b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_c56c395576799783cfb0c840_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_d93611a8a0912a802d383c91_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_ea396d6a3f8413d5a3d6e86e_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_fb5fd9ff51ca807b2948fdf8_tex_size_astc.png"
+      ],
+      "skill_bind_hints": [
+        {
+          "source": "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_infoshapemap_38996b624a3ce641dd91b348.luac",
+          "window": "fecd02267e5798dda3UOOgP7YeI e13520b2d406839a672PGmTc9sLI Becb6# b2f013a4b2Seh6le2GI ce38f42"
+        }
+      ],
+      "path_templates": [
+        "3dshapes/4068",
+        "3dshapes/4068",
+        "3dshapes\\4068",
+        "3dshapes/4068/",
+        "3dshapes/4068/100/",
+        "3dshapes/4068/90/",
+        "photo/portrait/4068",
+        "photo/portrait/4068",
+        "photo/icon/4068"
+      ],
+      "path_string_hits": [
+        "3dshapes/4068/",
+        "3dshapes/4068"
+      ],
+      "evidence_paths": [
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/3dshapes-path-strings.txt",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/shape-script-hits.json",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/map_script.idx_shape3dmap_6483e280cf8c946805611349.bin",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/script_3dshapes_6483e280cf8c946805611349.luac"
+      ],
+      "base_pack_closable": false,
+      "notes": "portrait pool decoded but not species-bound; ",
+      "device_priority_hint": "low",
+      "coverage_status_base_pack": "missing_model+missing_icon",
+      "coverage_status_strict": "missing_model+missing_icon"
+    },
+    {
+      "species_id": 4085,
+      "display_name": "local_shape_4085",
+      "shape_id": 4085,
+      "source_pack": "base_apk_hashres",
+      "coverage_status": "missing_model+missing_icon",
+      "missing": [
+        "missing_model",
+        "missing_icon"
+      ],
+      "model_ref": null,
+      "model_refs": [],
+      "skeleton_ref": null,
+      "material_refs": [],
+      "idle_action": null,
+      "attack_action": null,
+      "hit_action": null,
+      "death_action": null,
+      "action_vocab_observed": [],
+      "portrait_ref": null,
+      "portrait_refs": [],
+      "portrait_pool_decoded": [
+        "g1-local-evidence/pet_chain/portraits/259b04042690d47fbc6cea4f_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/2ca3efb76152143837bd165d_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/37a3c929064b362de968e9c2_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/4510c08727dc19da72fb4d37_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/479657c112c87bd75729e1f7_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/51db93bd7a49b99bf0575254_300x300.png",
+        "g1-local-evidence/pet_chain/portraits/6faabb299ab66ed94d90b599_82x82.png",
+        "g1-local-evidence/pet_chain/portraits/79569646a4a2a714a9df48b6_82x82.png"
+      ],
+      "skill_icon_refs": [
+        "g1-local-evidence/decoded/img_png/skillicon_012beae5072955aaaa7a4e30_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_18c4c8155e41fca99bbe3f53_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_3a492c083ffb82cb6522391b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_641025ea4583bd3c5f545795_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_7ddb9c8b7397c698d7ee87d4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_878d3b0b270fae0eb6cd36c4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_8ba3bbe247af0f75f2f28ce4_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_951f32e9575336f06b17135b_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_c56c395576799783cfb0c840_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_d93611a8a0912a802d383c91_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_ea396d6a3f8413d5a3d6e86e_tex_size_astc.png",
+        "g1-local-evidence/decoded/img_png/skillicon_fb5fd9ff51ca807b2948fdf8_tex_size_astc.png"
+      ],
+      "skill_bind_hints": [],
+      "path_templates": [
+        "3dshapes/4085",
+        "3dshapes/4085",
+        "3dshapes\\4085",
+        "3dshapes/4085/",
+        "3dshapes/4085/100/",
+        "3dshapes/4085/90/",
+        "photo/portrait/4085",
+        "photo/portrait/4085",
+        "photo/icon/4085"
+      ],
+      "path_string_hits": [
+        "3dshapes/4085/weapon1.gim",
+        "3dshapes/4085"
+      ],
+      "evidence_paths": [
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/3dshapes-path-strings.txt",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/decoded/img_png",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/pet_chain/portraits",
+        "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/shape-script-hits.json",
+        "res_MsNonRepo.idx#d811b6bd30545d2d7aa4bfc0",
+        "res_MsNonRepo.idx#9051119ef3e5c782c0df0176"
+      ],
+      "base_pack_closable": false,
+      "notes": "portrait pool decoded but not species-bound; skillicon pool decoded (track A IMG) but not species-bound; ",
+      "device_priority_hint": "low",
+      "coverage_status_base_pack": "missing_model+missing_icon",
+      "coverage_status_strict": "missing_model+missing_icon"
+    }
+  ],
+  "gaps": {
+    "base_pack_complete": [
+      4,
+      8,
+      15
+    ],
+    "strict_complete": [],
+    "species_bound_skillicon_missing": [
+      4,
+      8,
+      15,
+      2131,
+      2139,
+      3014,
+      4058,
+      4068,
+      4085
+    ],
+    "no_model": [
+      2131,
+      2139,
+      3014,
+      4058,
+      4068,
+      4085
+    ],
+    "portrait_missing": [
+      2131,
+      4058,
+      4068,
+      4085
+    ],
+    "note": "Do not claim runtime G1. base_pack complete = static refs locatable in APK + decoded icons; skill species map open."
+  },
+  "shape_icon_binds": {
+    "4": {
+      "portrait_paths": [
+        "photo/portrait/4"
+      ],
+      "skill_paths": [],
+      "model_paths": [
+        "3dshapes/0004"
+      ],
+      "evidence_count": 4
+    },
+    "8": {
+      "portrait_paths": [],
+      "skill_paths": [],
+      "model_paths": [
+        "3dshapes/0008"
+      ],
+      "evidence_count": 1
+    },
+    "15": {
+      "portrait_paths": [
+        "photo/portrait/15",
+        "photo/icon/15"
+      ],
+      "skill_paths": [],
+      "model_paths": [],
+      "evidence_count": 4
+    },
+    "2131": {
+      "portrait_paths": [],
+      "skill_paths": [],
+      "model_paths": [],
+      "evidence_count": 0
+    },
+    "2139": {
+      "portrait_paths": [
+        "photo/portrait/2139",
+        "portrait/2139.pngá\u0002j\u001a"
+      ],
+      "skill_paths": [],
+      "model_paths": [],
+      "evidence_count": 1
+    },
+    "3014": {
+      "portrait_paths": [
+        "photo/portrait/3014",
+        "portrait/3014!n\u0001\u0001bLblNpcl*N\u0013"
+      ],
+      "skill_paths": [],
+      "model_paths": [],
+      "evidence_count": 1
+    },
+    "4058": {
+      "portrait_paths": [],
+      "skill_paths": [],
+      "model_paths": [
+        "3dshapes/4058"
+      ],
+      "evidence_count": 4
+    },
+    "4068": {
+      "portrait_paths": [],
+      "skill_paths": [],
+      "model_paths": [
+        "3dshapes/4068"
+      ],
+      "evidence_count": 2
+    },
+    "4085": {
+      "portrait_paths": [],
+      "skill_paths": [],
+      "model_paths": [
+        "3dshapes/4085"
+      ],
+      "evidence_count": 2
+    }
+  },
+  "coverage_legend": {
+    "coverage_status / coverage_status_base_pack": "model MESSIAH + action vocab + portrait path string + decoded skillicon pool",
+    "coverage_status_strict": "also needs species-bound skillicon ids; currently partial_skill_unbound for 4/8/15"
+  }
+}

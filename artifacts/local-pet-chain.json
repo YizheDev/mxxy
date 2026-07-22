@@ -1,0 +1,305 @@
+{
+  "counts": {
+    "shapeconfig_thx": 38138,
+    "shapeconfig_local_non_blocker": 38135,
+    "shapeconfig_remote_blockers": 3,
+    "res_shape_thx": 19415,
+    "skillicon_thx": 1700,
+    "repository_idx": 22978,
+    "skillicon_idx": 1693,
+    "res_2dshapes_idx": 102,
+    "shapeconfig_id12_prefix_in_repository": 0,
+    "shapeconfig_id12_prefix_in_skillicon": 0,
+    "res_shape_id12_prefix_in_repository": 0
+  },
+  "remote_blockers": [
+    {
+      "number": 333,
+      "flags": "002e0003",
+      "id16": "c4b00e0c05975f81d4025c0aa8212a9b",
+      "tail8": "ea0be75025dc121b",
+      "id12_prefix": "c4b00e0c05975f81d4025c0a",
+      "path_hint": "c4/b00e0c05975f81d4025c0aa8212a9b",
+      "remote_blocker": true
+    },
+    {
+      "number": 5340,
+      "flags": "001e000b",
+      "id16": "d9d4ea67004deafb19640d8e441ed182",
+      "tail8": "b3884c6d781ff28e",
+      "id12_prefix": "d9d4ea67004deafb19640d8e",
+      "path_hint": "d9/d4ea67004deafb19640d8e441ed182",
+      "remote_blocker": true
+    },
+    {
+      "number": 5341,
+      "flags": "001e000a",
+      "id16": "8ba3208b364f1e51fe3e499cea0f1026",
+      "tail8": "03f1da46d0078cb2",
+      "id12_prefix": "8ba3208b364f1e51fe3e499c",
+      "path_hint": "8b/a3208b364f1e51fe3e499cea0f1026",
+      "remote_blocker": true
+    }
+  ],
+  "match_note": "Direct 12-byte prefix overlap between THX id16 and IDX id12 is usually zero (known from prior audit). Local closability is evidenced by repository MESSIAH / skillicon texture payloads present in base WPK.",
+  "local_evidence": {
+    "messiah_samples": [
+      {
+        "id12": "a7bff1c97daec9859e237e96",
+        "size": 49,
+        "kind": "messiah",
+        "head_hex": "2e4d45535349414802000000a1fb2cc2ee657543b0a032c2a3fb2c420122ae43"
+      },
+      {
+        "id12": "5de52a980832c130e1b3c5d6",
+        "size": 49,
+        "kind": "messiah",
+        "head_hex": "2e4d4553534941480200000008825cc2d52669c30e9a5bc2f5b15a4287b85c43"
+      },
+      {
+        "id12": "86954e5e00e3a2bbf3d575d5",
+        "size": 455,
+        "kind": "messiah",
+        "head_hex": "2e4d455353494148030000000f00626c6f636b5f31305f31312e6d7467000000"
+      },
+      {
+        "id12": "c7f18107478385cbeb1c37d2",
+        "size": 49,
+        "kind": "messiah",
+        "head_hex": "2e4d455353494148020000007d7df4c2151d3bbc81780bc3807df442fbe98343"
+      },
+      {
+        "id12": "21b6d62633e4ddd62a0ebbf0",
+        "size": 49,
+        "kind": "messiah",
+        "head_hex": "2e4d4553534941480200000060d60ac3b65f3cbe119e0cc35fd60a4376d28343"
+      },
+      {
+        "id12": "d8e9a394b022d5446833ad3f",
+        "size": 49,
+        "kind": "messiah",
+        "head_hex": "2e4d455353494148020000007e7df4c2f931e6bd2a5231c27e7df442cede8543"
+      },
+      {
+        "id12": "39ddc350106a9a9415e69119",
+        "size": 49,
+        "kind": "messiah",
+        "head_hex": "2e4d45535349414802000000881f01c30f58a13f3a971bc3881f0143477ba343"
+      },
+      {
+        "id12": "dfa885cc543006595c554d45",
+        "size": 49,
+        "kind": "messiah",
+        "head_hex": "2e4d45535349414802000000de799dc10000c036303012c14e5aa14112e3ea43"
+      },
+      {
+        "id12": "5d50a70b1fdd607290f9042d",
+        "size": 49,
+        "kind": "messiah",
+        "head_hex": "2e4d455353494148020000005b3c02c36a831bbf266851c35b3c02438d9a8343"
+      },
+      {
+        "id12": "92b66c1ec7559fb8a5c1fed8",
+        "size": 49,
+        "kind": "messiah",
+        "head_hex": "2e4d45535349414802000000d6fa86c2e76ecac2028790c2445ba742ea082843"
+      },
+      {
+        "id12": "9c68921605e4b303c82cc4b8",
+        "size": 49,
+        "kind": "messiah",
+        "head_hex": "2e4d455353494148020000007c7df4c26d9422c180c60cc37c7df442fbe98343"
+      },
+      {
+        "id12": "c25196f417a16ce9da9932ac",
+        "size": 49,
+        "kind": "messiah",
+        "head_hex": "2e4d45535349414802000000553ff7c234238ac04fae2cc3573ff742fb9d8343"
+      }
+    ],
+    "repository_texture_samples": [],
+    "skillicon_samples": [
+      {
+        "id12": "8ba3bbe247af0f75f2f28ce4",
+        "size": 2672,
+        "kind": "tex_size",
+        "head_hex": "5445585f53495a45400040005f673138494d475fa4a55a35a2090405f7031ba2"
+      },
+      {
+        "id12": "fb5fd9ff51ca807b2948fdf8",
+        "size": 2455,
+        "kind": "tex_size",
+        "head_hex": "5445585f53495a45400040005f673138494d475fa4a55a35a2090405f7031ba2"
+      },
+      {
+        "id12": "d93611a8a0912a802d383c91",
+        "size": 2306,
+        "kind": "tex_size",
+        "head_hex": "5445585f53495a45400040005f673138494d475fa4a55a35a2090405f7031ba2"
+      },
+      {
+        "id12": "7ddb9c8b7397c698d7ee87d4",
+        "size": 2690,
+        "kind": "tex_size",
+        "head_hex": "5445585f53495a45400040005f673138494d475fa4a55a35a2090405f7031ba2"
+      },
+      {
+        "id12": "ea396d6a3f8413d5a3d6e86e",
+        "size": 2479,
+        "kind": "tex_size",
+        "head_hex": "5445585f53495a45400040005f673138494d475fa4a55a35a2090405f7031ba2"
+      },
+      {
+        "id12": "c56c395576799783cfb0c840",
+        "size": 2473,
+        "kind": "tex_size",
+        "head_hex": "5445585f53495a45400040005f673138494d475fa4a55a35a2090405f7031ba2"
+      },
+      {
+        "id12": "641025ea4583bd3c5f545795",
+        "size": 2453,
+        "kind": "tex_size",
+        "head_hex": "5445585f53495a45400040005f673138494d475fa4a55a35a2090405f7031ba2"
+      },
+      {
+        "id12": "18c4c8155e41fca99bbe3f53",
+        "size": 2676,
+        "kind": "tex_size",
+        "head_hex": "5445585f53495a45400040005f673138494d475fa4a55a35a2090405f7031ba2"
+      },
+      {
+        "id12": "878d3b0b270fae0eb6cd36c4",
+        "size": 2740,
+        "kind": "tex_size",
+        "head_hex": "5445585f53495a45400040005f673138494d475fed54a15d0706054506074809"
+      },
+      {
+        "id12": "951f32e9575336f06b17135b",
+        "size": 2740,
+        "kind": "tex_size",
+        "head_hex": "5445585f53495a45400040005f673138494d475fed54a15d0706054506074809"
+      },
+      {
+        "id12": "012beae5072955aaaa7a4e30",
+        "size": 2469,
+        "kind": "tex_size",
+        "head_hex": "5445585f53495a45400040005f673138494d475fa4a55a35a2090405f7031ba2"
+      },
+      {
+        "id12": "3a492c083ffb82cb6522391b",
+        "size": 2669,
+        "kind": "tex_size",
+        "head_hex": "5445585f53495a45400040005f673138494d475fa4a55a35a2090405f7031ba2"
+      }
+    ],
+    "share_icons_available_in_apk": true
+  },
+  "g1_candidate_policy": {
+    "complete_requires": [
+      "model_ref (repository .MESSIAH)",
+      "material/texture",
+      "action clips",
+      "portrait",
+      "skill_icon_refs"
+    ],
+    "current_status": "partial",
+    "missing_config_species": [
+      "8ba3208b364f1e51fe3e499cea0f1026",
+      "c4b00e0c05975f81d4025c0aa8212a9b",
+      "d9d4ea67004deafb19640d8e441ed182"
+    ],
+    "next": "Use runtime path-format hits on NON-blocker ids, or recover shapeconfig->repository mapping from decrypted Json/script, then bind one local MESSIAH + skillicon into a render probe."
+  },
+  "sample_local_shapeconfig_ids": [
+    "f3469df28a7e5f69cb4851d9fd0e2e7c",
+    "7c4be7512df699616236799b7b7b3546",
+    "de549943bb45b035f65bd34ba6598bff",
+    "a3ed1b8a420c3d472afafa7df979dc42",
+    "4259a81fa6091a308f5f1e28088c24c9",
+    "aae397cce7b02c86bfa7e936cfcbfd09",
+    "2301bbbec7995ec6ed0ebd5b3860d5f3",
+    "21213d6fb7030af3a32443f86f3022b9",
+    "502d72f2e87da2eb7335e0a673658f89",
+    "8d7599a574569cf9e429c43080565b01",
+    "db7d9092058dd0d0884654d795db9c37",
+    "053cdd56929ebcc12ab5d52e401f2008",
+    "27404673e1ef4e97c691bfb437380d2f",
+    "35de14068499d8b9eb810a0307a6dc8e",
+    "ec32bad310b94d34f3f1c602b30d4fc5",
+    "97478ba1f086027cb3d9cf0dfeb5963f",
+    "883c49c7f77243613dfeb7bba62fcaeb",
+    "8f3ddb17142c129aa5d05b4b97eafd50",
+    "7b4f0d869ec5ac9ab893d163a944b162",
+    "406d7e2f71d5adb5b4474725bc10d1d1"
+  ],
+  "sample_res_shape_ids": [
+    "039cc0d519b48cd64562e73ee0deb00a",
+    "894bc112e0c56e6a1bc0fdc0f3f0c9f4",
+    "3ddccd5b1d4f2dac6a58800535f81632",
+    "015101b954f333d5fb84537eb0d57a95",
+    "4ecf761b3008afa631f04a9f3069d7e0",
+    "eb336f2c17cfcac222eee699100322ae",
+    "eb7ba341f0cf7c16efc273cac937c3ad",
+    "5d0b64153bcc3faba6adb43490adea65",
+    "43911b7fc4d0eeaa5d45a8eab3a9928e",
+    "00d3d5f7524284ca9fa97c8a5816b35d",
+    "65afab585b715ad085957aef9f3220bf",
+    "7117a0fc99e5d9ad6cc65fb181806184",
+    "d9bf5456462e8ddaa1c22355c5a1c391",
+    "3c0776e4bcaf31c85b8e834fd0315d33",
+    "51d047022fa78bb37a5ee409811f9513",
+    "240bf0db364614c4eb4cde6d48e2e45c",
+    "84a5fbea898d1c01808d4cce6ed99401",
+    "766d52af5791a24d0afe9a27db61ecfb",
+    "9b3733865d519d4058e03955a904e41f",
+    "b59412908e4c929f063f655b48490cbb"
+  ],
+  "sample_repository_ids": [
+    "a7bff1c97daec9859e237e96",
+    "5de52a980832c130e1b3c5d6",
+    "86954e5e00e3a2bbf3d575d5",
+    "85e086bc5f57cf085e17df46",
+    "96a403e4b15e6ac0c60c2f6f",
+    "3e96409ffd35fb5928b90b4c",
+    "560a89df466592e9c0a390c4",
+    "33065978baf292cf9c7c837d",
+    "dec55b9d4c3f82fc9883f40d",
+    "bc00c59a87bb138a81f037b5",
+    "4ed20be64644008d7de0b666",
+    "c7f18107478385cbeb1c37d2",
+    "b3ebf45f90baef495276a2d9",
+    "5e5a05deb8b7cdc5f2d779be",
+    "8da739cfcebbeb729fd3b046",
+    "21b6d62633e4ddd62a0ebbf0",
+    "2fa02e01ad45dd5a6c786781",
+    "ac855865c8d54b0a6beccd09",
+    "6b02964dee0d971eb616531a",
+    "b949ec27772e58cefd05b03b"
+  ],
+  "evidence_files": [
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/messiah_a7bff1c97daec9859e237e96.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/messiah_5de52a980832c130e1b3c5d6.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/messiah_86954e5e00e3a2bbf3d575d5.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/messiah_c7f18107478385cbeb1c37d2.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/messiah_21b6d62633e4ddd62a0ebbf0.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/messiah_d8e9a394b022d5446833ad3f.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/messiah_39ddc350106a9a9415e69119.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/messiah_dfa885cc543006595c554d45.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/messiah_5d50a70b1fdd607290f9042d.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/messiah_92b66c1ec7559fb8a5c1fed8.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/messiah_9c68921605e4b303c82cc4b8.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/messiah_c25196f417a16ce9da9932ac.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/skillicon_8ba3bbe247af0f75f2f28ce4_tex_size.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/skillicon_fb5fd9ff51ca807b2948fdf8_tex_size.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/skillicon_d93611a8a0912a802d383c91_tex_size.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/skillicon_7ddb9c8b7397c698d7ee87d4_tex_size.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/skillicon_ea396d6a3f8413d5a3d6e86e_tex_size.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/skillicon_c56c395576799783cfb0c840_tex_size.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/skillicon_641025ea4583bd3c5f545795_tex_size.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/skillicon_18c4c8155e41fca99bbe3f53_tex_size.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/skillicon_878d3b0b270fae0eb6cd36c4_tex_size.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/skillicon_951f32e9575336f06b17135b_tex_size.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/skillicon_012beae5072955aaaa7a4e30_tex_size.bin",
+    "/Users/ezer/Documents/ZendeskToFeishu/private-mxxy-work/runtime/logs/g1-local-evidence/skillicon_3a492c083ffb82cb6522391b_tex_size.bin"
+  ]
+}

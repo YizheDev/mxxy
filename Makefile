@@ -24,7 +24,12 @@ JS_SCRIPTS := \
 	scripts/android/kktkky-thx-filter-bypass.js \
 	scripts/android/kktkky-rc4-key-probe.js \
 	scripts/android/kktkky-patch-bypass-probe.js \
-	scripts/android/kktkky-img-gl-dump.js
+	scripts/android/kktkky-img-gl-dump.js \
+	scripts/android/kktkky-device-g1-probe.js \
+	scripts/android/kktkky-failopen-g1.js \
+	scripts/android/patch-failopen.js \
+	scripts/android/trace-check-header.js \
+	scripts/android/java-diag.js
 
 verify:
 	@set -e; for script in $(PY_SCRIPTS); do $(PYTHON) -m py_compile "$$script"; done
