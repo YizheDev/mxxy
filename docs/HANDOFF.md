@@ -2,147 +2,144 @@
 
 ```yaml
 project: mxxy-offline-single-player
-last_verified: 2026-07-22T18:45+0800
-phase: g1-local-pet-chain
+last_verified: 2026-07-23T00:15+0800
+phase: sdk-controller-replacement
 overall_status: partial
-buildable_apk: false
-key_breakthrough: downloader-gate-bypassed-via-smali
+buildable_apk: true
+key_breakthrough: fake-sdkcontroller-classloader-priority
+previous: downloader-gate-bypassed-via-smali
 authoritative_input_sha256: d520f56c541cb2400f7cf0048a66f328a91355f292425f3afba532c568bd0543
+working_apk: dist/mxxy-v25.apk
+patches_total: 25 (16 smali + 4 libGame.so binary + 5 SdkController replacement)
 ```
 
 ## 一、最终目标
 
-基于用户拥有并授权的 `kktkky-MXXY_M-1.563.apk`，最大限度复用现有宠物、人物、场景、UI、动画和特效，做成不访问任何第三方服务、数据仅保存在本机的单人 APK。核心体验为：
+基于用户拥有并授权的 `kktkky-MXXY_M-1.563.apk`，做成不访问任何第三方服务、数据仅保存在本机的单人 APK。核心体验：宠物展示、抽奖、合宠、个人战斗、本地免费商城。
 
-- 宠物模型、材质、动作、头像和技能图标正确显示。
-- 抽奖概率、卡池和保底可本地配置，结果事务性写入本地存档。
-- 合宠公式、资质/技能继承和随机规则可自定义，结果可展示、战斗和持久化。
-- 能完成固定敌人开始的个人回合战斗闭环，并逐步扩充技能、AI 和地图。
-- 商城不调用真实支付，本地价格为零或使用无限本地货币，购买与背包更新是同一事务。
-- 活动仅保留可单人化部分，使用本地日历和静态配置。
+（详见 IMPLEMENTATION_SPEC.md）
 
-“视觉和主要单人交互尽量一致”是可验证目标；实时运营、跨服、排行榜、官方账号资产和远程活动状态不属于离线一致性承诺。
+## 二、三大突破
 
-## 二、当前结论
+### 突破 #1：下载器门闩绕过（已完成）
 
-**重大突破（2026-07-22）**：通过 smali 补丁成功绕过下载器门闩和 HTTP DNS 重试循环。APK 现可在飞行模式下启动，不再显示「解析下载列表出错」门闩页面，OpenGL 渲染引擎正常启动。当前卡在 splash 画面，疑为 UniSDK 登录/认证层等待服务器响应。详见 `docs/GATE_BYPASS_LOG.md` 和 `docs/SMALI_PATCHES.md`。
+4 个 smali 补丁使 APK 在飞行模式下启动，不弹「解析下载列表出错」。OpenGL 渲染引擎正常初始化。详见 `docs/GATE_BYPASS_LOG.md` 和 `docs/SMALI_PATCHES.md`。
 
-**基础状态**：当前不能直接打包离线 APK。已证明客户端携带大量可复用资源，核心 DEX 可在受控环境恢复，Messiah 本地渲染管线可以离线初始化；已通过 smali 补丁绕过下载器门闩（`PatchListProxy.needDownload`→false, `Untitles.checkHeaderValue`→true, `HttpDnsAgent.switchDnsMode`→true, `HttpDns.fetch`→true）；尚未绕过 UniSDK 登录，尚未恢复 G1 完整宠物资源链，服务器权威的玩法数据层也尚未本地化。
+### 突破 #2：SdkController ClassLoader 劫持（进行中）
 
-| 要求 | 状态 | 当前证据 | 缺口 |
-|---|---|---|---|
-| 资源容器可读 | verified | 21 IDX、36 WPK、153,400 条边界全部验证 | RC4/XXH 语义和路径 ID 未解 |
-| 补丁目录可枚举 | verified | 194 THI/THX、604,222 条固定记录 | 记录字段语义/ID 映射未解 |
-| 核心 DEX 可恢复 | verified | 标准 DEX 8,763,836 bytes，JADX 得到 3,141 Java 文件 | 少量反编译错误；核心玩法多在 native/脚本 |
-| 本地渲染引擎启动 | verified | 断网启动 `libGame.so`，生成本地 shader cache | 尚未进入可控宠物场景 |
-| 宠物资源存在 | partial | `repository`、`res_shape`、`shapeconfig`、技能图标等清单；CDN MD5=THX `id_a\|\|id_b[:4]` | 宠物 ID—模型—材质—动作链未闭合；3 个远端 shapeconfig 补丁仍缺 |
-| 抽奖可离线实现 | partial | UI、图标、JSON/脚本候选存在 | 卡池/动画调用链和本地事务未实现 |
-| 合宠可离线实现 | partial | 宠物形状与技能资源存在 | 原对象格式、展示入口、公式事务未实现 |
-| 个人战斗可离线实现 | partial | 战斗特效、杂项、地图/引擎资源存在 | 状态机、AI、伤害和奖励边界未本地化 |
-| 本地存档 | unknown | 尚无实现 | 需要 schema、迁移、校验、原子提交和恢复测试 |
-| 可构建安装 APK | unknown | 尚无 Gradle/重打包实现 | 必须先通过下述实现门槛 |
+**核心发现**：Android ClassLoader 优先加载基 APK 的 DEX，后加载受 UniSec 保护的 `.unzip/classes.dex`。因此在基 APK 的 `smali_classes4/com/netease/my/SdkController.smali` 中放置替代实现即可拦截受保护 DEX 的同名类。
 
-## 三、已完成工作与证据
+**已知 native JNI 入口**（均需 static 方法）：
+- `getPlatform()`, `getSdkValue(String)`, `getUdid()`, `getAppChannel()`, `getChannel()`, `isMuMu()`, `getSdkVersion()`, `getEngineVersion()`, `getProjectId()`, `getAppKey()`
+- `init()`, `initWeb()`, `uploadDrpf(String)`, `uploadDrpf(Context)`, `uploadDrpf()`, `upload_drpf()`
+- `setActivity(Activity)`, `showSplash()`, `openLoginView()`, `checkLoginSucc(String,String)`, `gameLoginSuccess()`
+- `openAnnouncement()`, `closeAnnouncement()`, `initDrpf()`, `checkDrpf()`, `drpfCallback()`
+- 字段：`OPEN_ANNOUNCEMENT:Z`, `CLOSE_ANNOUNCEMENT:Z`, `IS_SDK_INIT:Z`, 等
 
-### 3.1 样本和保护层
+**策略**：在 `init()` 中直接设置 UID/SESSION/LOGIN_STAT 并调用 `ntGameLoginSuccess()`，绕过 openLoginView 等待。
 
-- 样本约 1.92 GiB，包名 `com.netease.my`，内部 `versionName=1.555.0`、`versionCode=15550`，文件名标称 1.563。
-- ARM64 与 armeabi-v7a 原生库同时存在；应用由 NetEase StubApp/UniSec/UniFix 保护。
-- `_ntcfgss.dat` 会被复制为私有目录 `.unzip/classes.dex`，初始内容不是标准 DEX。
-- 动态 DEX 扫描在进程内导出 48 个标准 DEX（总计 119,663,024 bytes）；核心标准 DEX SHA-256 为 `62de0096...debc`。
-- 核心类包括 `PatchListCore`、`PatchListProxy`、`MessiahNativeActivity`、`SdkController`。
+### 突破 #3：libGame.so URL 重定向（已完成）
 
-### 3.2 WPK/IDX 资源
+成功将 libGame.so 中的 `http://zy.czzdpb.com/static/` → `http://127.0.0.1:8080/s/` 和 `http://zy.czzdpb.com/dynamic/` → `http://127.0.0.1:8080/d/`，Java 层 `ServerAddress.smali` 中 MPay URL 也指向本地。原生下载器已连接至本地服务器。Shapeconfig stub 文件阻止了 CDN 重试循环。
 
-- IDX：36-byte `SKPW` header + `count * 28-byte` records。
-- 每条记录含 12-byte opaque path ID、stored size、offset、从 1 开始的 WPK part 和 32-bit check/hash。
-- 21 个 IDX、36 个 WPK、153,400 个条目；所有物理边界通过校验。
-- 存储 payload 合计 1,837,237,235 bytes：RC4 35,917、image 24,405、Messiah 2,247、other g18xxh 23,199、texture 67,632。
-- 已从仓库资源恢复部分路径字符串，例如 `3dshapes/0004/07/chibang`、`3dshapes/4085/weapon1.gim`、`3dshapes\\6006\\6006.mesh` 及 `/npc/...`。
-- 72,869 条可读路径候选扩展成 617,905 变体，对 MD5/SHA1/SHA256/XXH3-128/多种 64+32 组合做过匹配，命中为零。不要重复无种子的通用哈希穷举。
+## 三、当前状态矩阵
 
-### 3.3 THI/THX 补丁目录
-
-- THI：`THDX` + 12-byte tail + N × 12-byte opaque records。
-- THX：`THDO` + 72-byte tail + N × 28-byte opaque records。
-- 194 个文件，604,222 条记录。
-- 关键计数：`shapeconfig.thx=38,138`、`res_shape.thx=19,415`、`res_item.thx=11,311`、`res_skillicon.thx=1,700`、`res_fight_misc.thx=60`、`Json.thx=24,566`、`script.thx=12,522`、`repository.thx=60,184`。
-- 多数 THX 清单条目多于 APK 中 WPK 条目，证明基础包不等于完整远程补丁集。
-
-### 3.4 隔离动态实验
-
-- Apple Silicon 主机、Android 11/API 30 ARM64 rootable AVD；安装后立即启用飞行模式并关闭 Wi-Fi/移动数据。
-- Frida host/server 17.16.4 匹配，APK 安装并启动成功。
-- 修复过一次追踪器自致问题：替换 `System.loadLibrary` 改变调用者 ClassLoader 语义，导致 `libGame.so not found`；删除该 Java 替换后原生库正常加载。
-- `libunisec.so` 的核心 JNI 注册偏移已经记录在 `docs/DYNAMIC_AUDIT_LOG.md`。
-- 使用 Java `performClick()` 本地接受隐私页面后，断网进入补丁失败页面；未访问第三方服务。
-- 本地引擎成功装载 `libGame.so`、注册 Skeleton/Material/Scene 等类型、初始化渲染并生成大量 ES3 shader cache，证明离线渲染基础存在。
-- 观察到三个远程 `shapeconfig` 对象请求；这直接证明宠物/形状配置至少部分不在基础 APK 中。路径摘要见动态日志，不要主动请求对应域名。
-- 最新资源追踪器已覆盖 `mmap`/`lseek`/`AAssetManager_openFileDescriptor`、APK HashRes offset 图（388 条目）与 zlib；启动期大量 base.apk 中央目录访问已捕获。HashRes 数据区命中仍少，资源多经引擎内缓冲/解包路径。
-- URL ADRP+ADD xref（10 处）与运行时 hook 已闭合：`0x1cb53c0` 将 16-byte MD5 格式化为 `xx/yyyy...`；`0x1cbb4e4` 拼出 dynamic URL。三个缺失补丁的 MD5/URL 与 `shapeconfig.thx` 记录一致。
-- WPK 容器解析入口（verified）：
-  - `_g18RC4_` parser `libGame.so+0x1cfe480`：成功导出明文 JSON（consolidate / 43 项 `pkginfo`，含 `shapeconfig`）。
-  - `_g18xxh_` parser `libGame.so+0x1cfd2e0`：剥 12 字节头，载荷为 `ZZZ4` 或嵌套 `_g18RC4_2`。
-  - 包级静态 RC4 keystream（5952 bytes）已从已知明文对恢复；`scripts/android/kktkky_g18_crypto.py` 可复现加解密 `_g18RC4_`（**不可**用于 `_g18RC4_2`）。
-- 在 `pkres/{,data/,res/}` 预置 `_g18RC4_` stub **不能**阻止 HTTP 拉取；客户端仍构造 dynamic URL（curl_code=6）。不伪造网络成功响应。
-
-## 四、已遇问题、处理和结论
-
-| 问题 | 已做处理 | 结果/后续 |
+| 要求 | 状态 | 证据 |
 |---|---|---|
-| 保护层隐藏核心 DEX | 进程内扫描标准 DEX magic/size 并导出 | 核心 DEX 已恢复；继续以 native/脚本为主 |
-| Hook `System.loadLibrary` 后主库找不到 | 移除 Java 替换，仅保留 native dlopen 日志 | 已解决，是追踪器副作用，不是 APK 缺库 |
-| read/memcmp Hook 导致系统线程崩溃 | 路径/AAsset open 立即挂钩，数据和比较 hook 延迟 1.5/2.5 秒 | 启动稳定，但仍没有资源事件 |
-| 路径哈希常见算法零命中 | 记录完整候选与算法范围后停止盲猜 | CDN 路径改用 THX 内 16-byte MD5；IDX 12-byte ID 仍未解 |
-| Rizin 全量分析没有 URL xref | 定向 ADRP+ADD 扫描 + 运行时 hook | URL/path 构造链已 verified；勿再 `aaaa` |
-| 模拟器不支持 ASTC | 保留逻辑/追踪用途 | 最终视觉验收改用支持 ASTC 的 ARM64 实机或兼容环境 |
-| 离线启动卡补丁失败 | 三个缺失 shapeconfig 已标 `missing_config`；勿空转 CDN | 本地优先：用基础包 shape/repository/skillicon 闭合一只宠物 |
-| 误判 `_g18RC4_2` 为新算法 | 已核实 magic 仍为 `_g18RC4_`，密文首字节可为 ASCII `2` | 用 `kktkky_g18_crypto.py` + keystream；勿再盲猜第二密钥 |
-| GitHub 远端匿名/SSH不可访问 | 本地建立完整 Git 基线 | 需要有仓库权限的 GitHub 凭据后推送 |
-| **下载器门闩** `needDownload` 和 `Check header` 阻止离线启动 | **smali patch**: `PatchListProxy.needDownload→false`, `Untitles.checkHeaderValue→true` | ✅ 已绕过 (2026-07-22)，无下载错误 |
-| **HTTP DNS 重试循环** 阻塞 UniSDK 初始化 | **smali patch**: `HttpDnsAgent.switchDnsMode→true`, `HttpDns.fetch→true` | ✅ 已绕过，启动序列完成 |
-| **Frida Java bridge 不可用**（NetEase UniSec 保护） | 确认 `Java` 在 spawn/attach 模式均 undefined；改 smali 补丁路线 | ✅ 用 apktool 重建+签名替代 Frida |
-| **apktool 重建 APK 缺少 AndroidManifest.xml** | 从 `original/AndroidManifest.xml` 手动注入二进制 manifest | ✅ Python zipfile 添加后签名安装成功 |
-| **Splash 画面卡住**（疑为 UniSDK 登录） | 待 bypass | 🟡 SdkController 在受保护 DEX，需找替代路径 |
+| 下载器门闩 | verified | 4 smali 补丁，飞行模式无下载错误 |
+| HTTP DNS 循环 | verified | 3 补丁消除 DNS 错误 |
+| Shapeconfig 下载 | verified | Stub + URL redirect 阻止 CDN |
+| CDN/Auth URL 重定向 | verified | libGame.so + ServerAddress patch |
+| SdkController 替代 | partial | 基 APK 假类被优先加载，25 个方法已实现 |
+| 登录绕过 | partial | hasLogin/ntLogin 已 patch，init() 中直接触发 ntGameLoginSuccess |
+| 构建安装 APK | verified | apktool + zipalign + apksigner 工具链 |
+| 补充： | | |
+| 资源容器可读 | verified | 21 IDX, 36 WPK, 153,400 entries |
+| 核心 DEX 可恢复 | verified | 8,763,836 bytes, 3,141 Java files |
+| 本地渲染引擎 | verified | libGame.so 离线初始化，OpenGL 正常 |
+| 宠物资源 | partial | Shape 4/8/15 资源链接近完整，3 个远端 shapeconfig 缺失 |
+| G1-G6 玩法实现 | unknown | 需先通过登录 |
 
-## 五、当前最优下一步
+## 四、当前最优下一步
 
-**下一关：绕过 UniSDK 登录门闩**
+**在 SdkController.init() 中直接调用 ntGameLoginSuccess()**（已实现于 v25），验证游戏是否进入场景。如果不行，需要在 init() 调用后加上延迟，或等待 onfinishInit 回调后再触发。
 
-SdkController 在受保护的 DEX 中（apktool 无法反编译），需要从可访问的 smali 类入手：
-- `smali/com/netease/ntunisdk/base/SdkBase.smali` — UniSDK 基础类
-- `smali/com/netease/ntunisdk/netease/NeteaseBase.smali` — 登录流程相关
-- `smali_classes4/com/netease/ntunisdk/base/SdkBase.smali` — 备用路径
+**达到可玩需要**：
+1. ntGameLoginSuccess() 成功触发游戏场景转换
+2. 本地服务器返回正确格式的 shapeconfig 文件内容（而非 JSON stub）
+3. 补全 SdkController 剩余 JNI 入口方法
+4. 删除 INTERNET 权限 + 独立包名/签名
 
-备选方案：在 libGame.so native 层 hook `SdkController.isLogined()` 等关键方法。
+## 五、补丁清单
 
-更多细节见 `docs/GATE_BYPASS_LOG.md`。
+### Smali 补丁（16 个）
 
-## 六、进入实现阶段的硬门槛
+| # | 文件 | 方法 | 修改 |
+|---|------|------|------|
+| 1 | PatchListProxy.smali | needDownload() | return false |
+| 2 | Untitles.smali | checkHeaderValue() | return true |
+| 3 | HttpDnsAgent.smali | switchDnsMode() | return true |
+| 4 | HttpDns.smali | fetch() | return true |
+| 5 | SdkBase.smali (classes4) | hasLogin() | return true |
+| 6 | SdkBase.smali (classes4) | hasGuestLogined() | return true |
+| 7 | NeteaseBase.smali | ntLogin() | loginDone(0) + ntGameLoginSuccess |
+| 8 | HttpDnsAgent$a.smali | run() | no-op |
+| 9 | HttpDns.smali | updateAnycastIp() | no-op |
+| 10 | SdkNetease.smali | init() | skip network, call finishInit(0) |
+| 11 | NeteaseBase.smali | init() | skip client log |
+| 12 | NeteaseUtils.smali | is3rdLoginChannel() | return true |
+| 13 | SdkNetease.smali | login() | loginDone(0) |
+| 14 | SdkNetease.smali | logout() | no-op |
+| 15 | ServerAddress.smali | 4 URLs | → 127.0.0.1:8080/mpay |
+| 16 | SdkController.smali (NEW) | 完整替代实现 | 拦截 protected DEX |
 
-必须用运行证据逐项通过：
+### libGame.so 二进制补丁（2 个）
 
-1. 至少一个宠物 ID 的模型、材质、动作、头像和技能图标资源链完整，且测试进程正确渲染。
-2. 能构造宠物对象并从本地存档退出重进恢复。
-3. 离线抽奖一次，随机记录、保底状态、奖励和库存同一事务提交。
-4. 离线合宠一次，自定义公式生成的新宠物能展示、保存和重新加载。
-5. 固定敌人个人战斗完成进入、行动、结算、奖励和存档闭环。
-6. 全部真实支付入口和第三方地址不可达；应用使用独立包名、签名和离线标识。
+| # | 偏移 | 修改 |
+|---|------|------|
+| 17 | 0x4b2c0e8 | `http://zy.czzdpb.com/static/` → `http://127.0.0.1:8080/s/` |
+| 18 | 0x4b2c2e8 | `http://zy.czzdpb.com/dynamic/` → `http://127.0.0.1:8080/d/` |
 
-门槛 1 之前只做审计/探针，不搭建假成功 UI。门槛 1–5 全部通过后，才可称为“可玩离线 APK”。
+## 六、构建命令
 
-## 七、仓库与私有制品
+```bash
+# 1. 解包
+apktool d input.apk -o unpacked/patch-skip
 
-Git 中只保存脱敏文档、脚本、测试、构建配置和 SHA-256 清单。以下内容不进入普通 Git：原 APK、解包树、WPK/IDX、THI/THX、DEX/SO、AVD、截图和原始日志。新设备按照 `docs/GIT_AND_MIGRATION.md` 从授权私有存储补齐，或按 `docs/ENVIRONMENT_RUNBOOK.md` 再生。
+# 2. 应用所有 smali 补丁（见 SMALI_PATCHES.md）
 
-关键逻辑制品及哈希见 `artifacts/manifests/source-artifacts.sha256`。任何哈希不一致都应视为新样本，不能沿用本报告结论。
+# 3. 添加 SdkController 替代实现
+cp SdkController.smali unpacked/patch-skip/smali_classes4/com/netease/my/
 
-## 八、专项文档索引
+# 4. 重建
+apktool b unpacked/patch-skip -o unsigned.apk
 
-- `docs/ENVIRONMENT_RUNBOOK.md`：环境、变量、工具和复现命令。
-- `docs/DYNAMIC_AUDIT_LOG.md`：动态时间线、JNI 偏移和故障证据。
-- `docs/OFFLINE_RESOURCE_AUDIT.md`：资源结构与玩法依赖。
-- `docs/IMPLEMENTATION_SPEC.md`：离线数据模型、事务和功能验收规格。
-- `docs/GIT_AND_MIGRATION.md`：分支、提交、制品、备份和换机步骤。
-- `docs/STATIC_ANALYSIS.md`：初始静态审计。
-- `docs/LEGACY_SERVER_ROADMAP.md`：已停用的联网私服思路，仅供历史分析。
+# 5. 注入 libGame.so URL patch
+python3 patch_lib_urls.py unsigned.apk
+
+# 6. 对齐 + 签名
+zipalign -p -f 4 unsigned.apk aligned.apk
+apksigner sign --ks keystore/offline-debug.jks --ks-pass pass:mxxyoffline \
+  --ks-key-alias mxxy-offline --key-pass pass:mxxyoffline --out dist/signed.apk aligned.apk
+
+# 7. 安装前部署 stub 文件
+adb shell mkdir -p /sdcard/Android/data/com.netease.my/files/pkres/{data,res}
+adb push artifacts/stubs/* /sdcard/Android/data/com.netease.my/files/pkres/data/
+adb push artifacts/stubs/* /sdcard/Android/data/com.netease.my/files/pkres/res/
+
+# 8. 启动本地服务器
+python3 scripts/android/local_server.py 8080 &
+adb reverse tcp:8080 tcp:8080
+
+# 9. 安装启动
+adb install -r dist/signed.apk
+adb shell am start -n com.netease.my/com.netease.game.MessiahNativeActivity
+```
+
+## 七、容器/仓库
+
+Git 仅保存脱敏文档、脚本、SdkController 模板。私有制品（原始 APK, WPK/IDX, DEX/SO, keystream）不在仓库中。Keystore 位于 `artifacts/keystore/`。
+
+关键 SHA-256：
+- 原始 APK: `d520f56c541cb2400f7cf0048a66f328a91355f292425f3afba532c568bd0543`
+- 核心 DEX: `62de0096e2d045633af22effaf4c0c61cb726ba41500006833a4743305d3debc`

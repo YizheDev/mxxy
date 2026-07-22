@@ -35,12 +35,15 @@
 | 陷阱 | 现象 | 正确做法 |
 |------|------|----------|
 | `Module.findExportByName(null, name)` | 抛出 `TypeError: not a function` | 改用 `Module.findGlobalExportByName(name)` |
-| Frida `Java.perform` / `Java.performNow` | `Java` 对象始终 undefined（NetEase UniSec 保护阻止 Java bridge） | 用 smali 补丁替代 Frida Java hooks |
+| Frida `Java.perform` / `Java.performNow` | `Java` 对象始终 undefined（NetEase UniSec 保护阻止 Java bridge） | 用 smali 补丁或 SdkController 替代 |
 | `libc.enumerateExports()` | 返回 0 条结果 | 用 `Module.findGlobalExportByName` 逐个查找 |
 | `__android_log_print` 追踪下载器日志 | hook 成功但捕获不到下载器消息 | 下载器直接写 patchlog 文件，不走 Android logging |
 | `curl_easy_perform` 等 libcurl 符号 | 全部返回 null | libcurl 静态链接在 libGame.so 中，无导出符号 |
 | Smali `.locals 1` + 使用 v0,v1 两个寄存器 | `VerifyError: invalid argument count exceeds outsSize` | `.locals 1` 时只能用 v0，多用寄存器需增加 `.locals N` |
-| `LogUtil.i(String, String)` 签名 | smali 中写成 `invoke-static {v0, v1}, LogUtil;->i(Ljava/lang/String;)V` 参数不匹配 | LogUtil.i 接受 (String, String) 两个参数: `invoke-static {v0, v1}, LogUtil;->i(Ljava/lang/String;Ljava/lang/String;)V` |
-| apktool 重建 APK | 产物缺少 AndroidManifest.xml | 从 `original/AndroidManifest.xml` 手动注入（见 SMALI_PATCHES.md） |
-| SdkController smali 查找 | 文件不在 apktool 解包目录中 | 核心 DEX 受 UniSec 保护，apktool 无法反编译，需从可访问类迂回 |
-| Stub 文件写入 APP 私有目录 | `Permission denied`（Frida 进程无权限） | 用 `adb push`（root）在 APP 启动前预置文件 |
+| `LogUtil.i(String, String)` 签名 | smali 中写成 `invoke-static {v0, v1}, LogUtil;->i(Ljava/lang/String;)V` 参数不匹配 | LogUtil.i 接受 (String, String) 两个参数 |
+| apktool 重建 APK | 产物缺少 AndroidManifest.xml | 从 `original/AndroidManifest.xml` 手动注入 |
+| SdkController smali 查找 | 文件不在 apktool 解包目录中 | **使用 ClassLoader 劫持**：在 smali_classes4 中放置同名类，基 APK 优先加载 |
+| Stub 文件写入 APP 私有目录 | `Permission denied` | 用 `adb push`（root）在 APP 启动前预置文件 |
+| Frida getaddrinfo Interceptor.replace | 导致 SIGSEGV 崩溃 | 不要在 Frida 中完全替换 getaddrinfo，改用 Interceptor.attach |
+| libGame.so 二进制 URL patch | 替换字符串长度必须完全一致 | 短于原始值的 URL 用 \\x00 填充到相同长度 |
+| NeteaseBase.init() 中调用 setPropStr | String.substring(-1) 崩溃 | SdkNetease 重写了 setPropStr 做额外验证，init 阶段不可直接调用 |
