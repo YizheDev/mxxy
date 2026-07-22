@@ -171,3 +171,94 @@ JADX 少量错误不等于整体失败；记录版本、类数量、错误数量
 - `make verify` 通过。
 - 新观察已写入 `docs/DYNAMIC_AUDIT_LOG.md`，当前判断同步到 `docs/HANDOFF.md`。
 - 原始日志和制品仍在私有目录，没有进入 Git 状态。
+
+## 9. Smali 补丁 + APK 重建（门闩绕过）
+
+此步骤用于绕过下载器门闩，使 APK 可在飞行模式下启动。详细文档见 `docs/SMALI_PATCHES.md`。
+
+### 9.1 安装 apktool
+
+```bash
+brew install apktool
+# 验证: apktool --version  # 应输出 3.0.3+
+```
+
+### 9.2 解包 APK
+
+```bash
+cd "$MXXY_WORK"
+apktool d "$MXXY_APK" -o unpacked/patch-skip
+```
+
+### 9.3 应用 smali 补丁
+
+修改以下 4 个文件（具体替换内容见 `docs/SMALI_PATCHES.md`）：
+
+1. `unpacked/patch-skip/smali_classes8/com/netease/download/list/PatchListProxy.smali`
+   - `needDownload()Z` → `const/4 v0, 0x0; return v0`
+
+2. `unpacked/patch-skip/smali_classes6/com/dev/downloader/utils/Untitles.smali`
+   - `checkHeaderValue(Ljava/lang/String;)Z` → `const/4 v0, 0x1; return v0`
+
+3. `unpacked/patch-skip/smali/com/netease/ntunisdk/core/httpdns/HttpDnsAgent.smali`
+   - `switchDnsMode(Landroid/content/Context;Ljava/lang/String;)Z` → `const/4 v0, 0x1; return v0`
+
+4. `unpacked/patch-skip/smali/com/netease/ntunisdk/core/httpdns/dns/HttpDns.smali`
+   - `fetch(Landroid/content/Context;Ljava/lang/String;Z)Z` → `const/4 v0, 0x1; return v0`
+
+### 9.4 重建 APK
+
+```bash
+apktool b unpacked/patch-skip -o offline-apk/patch-skip-unsigned.apk
+```
+
+### 9.5 注入 AndroidManifest（apktool 重建时缺失）
+
+```bash
+python3 -c "
+import zipfile, shutil
+shutil.copy2('offline-apk/patch-skip-unsigned.apk', 'offline-apk/patch-skip-fixed.apk')
+with open('unpacked/patch-skip/original/AndroidManifest.xml', 'rb') as f:
+    data = f.read()
+with zipfile.ZipFile('offline-apk/patch-skip-fixed.apk', 'a', zipfile.ZIP_DEFLATED) as zf:
+    if 'AndroidManifest.xml' not in zf.namelist():
+        zf.writestr('AndroidManifest.xml', data)
+"
+```
+
+### 9.6 签名 + 安装
+
+```bash
+export ANDROID_SDK_ROOT=/opt/homebrew/share/android-commandlinetools
+
+# 对齐
+$ANDROID_SDK_ROOT/build-tools/34.0.0/zipalign -p -f 4 \
+  offline-apk/patch-skip-fixed.apk offline-apk/patch-skip-aligned.apk
+
+# 签名（keystore 从私有目录复制，不进 Git）
+$ANDROID_SDK_ROOT/build-tools/34.0.0/apksigner sign \
+  --ks "$MXXY_WORK/offline-apk/keystore/offline-debug.jks" \
+  --ks-pass pass:mxxyoffline --ks-key-alias mxxy-offline \
+  --key-pass pass:mxxyoffline \
+  --out dist/mxxy-patched-signed.apk \
+  offline-apk/patch-skip-aligned.apk
+
+# 安装
+adb -s emulator-5554 install -r dist/mxxy-patched-signed.apk
+```
+
+### 9.7 启动测试
+
+```bash
+# 确保飞行模式
+adb shell settings put global airplane_mode_on 1
+
+# 启动
+adb shell am start -n com.netease.my/com.netease.game.MessiahNativeActivity
+
+# 验证
+# - patchlog 不应存在（无下载错误）
+# - 不应有 NeteaseHttpDns 循环日志
+# - 不应有 VerifyError 崩溃
+# - 应在 55s 后看到 app time recorder end
+```
