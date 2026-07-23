@@ -62,29 +62,55 @@ patches_total: 16 smali + 2 libGame.so binary + 1 SdkController replacement
 
 ## 四、当前最优下一步
 
-### 2026-07-23 会话进展（v27）
+### 2026-07-23 会话进展（v28）
 
-**已确认**：
-- `SdkNetease.init()` 会被 native 代码调用 ✅
-- `OnFinishInitListener` 正确方法名是 `finishInit(I)` **不是** `onfinishInit(I)` ✅（修复了之前的崩溃）
-- `ntGameLoginSuccess()` 在 SdkNetease.init() 中成功调用 ✅
-- 进程不再被 ANR 杀掉，保持存活 ✅
-- Messiah 引擎正常启动（PhysicsSceneBody, SceneComponent 类型已注册）✅
+**v28 重大进展** — 恢复原始 `SdkNetease.init()` 和 `NeteaseBase.init()` 调用链：
 
-**仍卡在 splash 画面**，引擎在等待未知信号才会切换场景。
+| 里程碑 | v25 | v26 | v27 | v28 |
+|--------|-----|-----|-----|-----|
+| 下载器门闩 | ✅ | ✅ | ✅ | ✅ |
+| SDK init 调用 | ✅ | ❌(ANR) | ✅(简化) | ✅(原始链) |
+| `finishInit` 崩溃 | ✅* | ❌ | ❌ | ✅ |
+| `onfinishInit:0` 日志 | ✅ | ❌ | ❌ | ✅ |
+| `NativeOnInitialized` | - | ❌ | ❌ | ✅ |
+| `succeed to init unisdk` | ❌ | ❌ | ❌ | ✅ |
+| 进程存活 | ❌ | ❌(ANR) | ✅ | ✅ |
+| 场景切换 | ❌ | ❌ | ❌ | ❌ |
 
-### 下一步
+*注: v25 由另一 Agent 构建，确有 onfinishInit:0 但方法名错误导致不稳定
 
-**找出 native 引擎期待的场景转换信号**。可能的方向：
-1. **服务器数据响应**：引擎可能在等待 game server 的 enter world / role list 响应。需要抓取或本地模拟。
-2. **额外 SDK 回调**：除了 ntGameLoginSuccess()，可能还需要其他回调如角色选择、服务器选择等。
-3. **Native 层分析**：在 libGame.so 中寻找 splash→scene 的分支逻辑（Frida native hooks）。
-4. **Lua 脚本触发**：场景转换可能在 Lua 层控制，需要在 `@view/` 脚本中寻找触发点。
+**v28 已验证的引擎初始化流程**：
+1. `Messiah Channel: succeed to init unisdk` — SDK 初始化成功
+2. `Java_com_netease_messiah_Channel_NativeOnInitialized` — 原生引擎初始化完成
+3. `NativeOnExtendFunc` — 扩展函数调用（多次）
+4. `SplashDialog: showSplash` — 显示 splash 画面
+5. OpenGL 持续渲染
+
+### 架构瓶颈分析
+
+**Smali 补丁已到极限**。客户端检查全部绕过，但游戏引擎仍在等待**服务器响应**：
+
+- 游戏使用 `C_*/S_*` 协议与服务器通信（见 `docs/offline-facade-boundaries.md`）
+- Splash → 场景切换需要服务器返回角色列表 / 进入世界等数据
+- Smali 只能绕过客户端检查，无法模拟服务器响应
+
+### 下一步：两个方向
+
+**方向 A：本地服务器模拟**
+- 分析 `C_*/S_*` 协议（Lua 脚本 + native protocol）
+- 实现本地服务器响应角色列表、进入世界等请求
+- 优势：游戏逻辑完整保留
+
+**方向 B：深度引擎修改**
+- 修改 libGame.so native 代码跳过服务器等待
+- 或修改 Lua 脚本直接跳转到游戏场景
+- 优势：无需服务器，更接近纯单机
 
 **达到可玩需要**：
-1. 场景成功从 splash 切换到游戏主界面
-2. 本地服务器返回正确格式的资源文件
-3. 删除 INTERNET 权限 + 独立包名/签名
+1. 场景成功从 splash 切换到游戏主界面 ← **当前卡点**
+2. 本地服务器或引擎修改实现角色/世界数据
+3. 实现 G1-G5：宠物渲染、存档、抽奖、合宠、战斗
+4. 删除 INTERNET 权限 + 独立包名/签名
 
 ## 五、补丁清单
 
