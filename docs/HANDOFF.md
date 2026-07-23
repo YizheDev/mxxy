@@ -2,15 +2,15 @@
 
 ```yaml
 project: mxxy-offline-single-player
-last_verified: 2026-07-23T00:15+0800
+last_verified: 2026-07-23T10:30+0800
 phase: sdk-controller-replacement
 overall_status: partial
 buildable_apk: true
-key_breakthrough: fake-sdkcontroller-classloader-priority
+key_breakthrough: sdk-init-ntgameloginsuccess-triggered
 previous: downloader-gate-bypassed-via-smali
 authoritative_input_sha256: d520f56c541cb2400f7cf0048a66f328a91355f292425f3afba532c568bd0543
-working_apk: dist/mxxy-v25.apk
-patches_total: 25 (16 smali + 4 libGame.so binary + 5 SdkController replacement)
+working_apk: dist/mxxy-v27-signed.apk
+patches_total: 16 smali + 2 libGame.so binary + 1 SdkController replacement
 ```
 
 ## 一、最终目标
@@ -62,13 +62,29 @@ patches_total: 25 (16 smali + 4 libGame.so binary + 5 SdkController replacement)
 
 ## 四、当前最优下一步
 
-**在 SdkController.init() 中直接调用 ntGameLoginSuccess()**（已实现于 v25），验证游戏是否进入场景。如果不行，需要在 init() 调用后加上延迟，或等待 onfinishInit 回调后再触发。
+### 2026-07-23 会话进展（v27）
+
+**已确认**：
+- `SdkNetease.init()` 会被 native 代码调用 ✅
+- `OnFinishInitListener` 正确方法名是 `finishInit(I)` **不是** `onfinishInit(I)` ✅（修复了之前的崩溃）
+- `ntGameLoginSuccess()` 在 SdkNetease.init() 中成功调用 ✅
+- 进程不再被 ANR 杀掉，保持存活 ✅
+- Messiah 引擎正常启动（PhysicsSceneBody, SceneComponent 类型已注册）✅
+
+**仍卡在 splash 画面**，引擎在等待未知信号才会切换场景。
+
+### 下一步
+
+**找出 native 引擎期待的场景转换信号**。可能的方向：
+1. **服务器数据响应**：引擎可能在等待 game server 的 enter world / role list 响应。需要抓取或本地模拟。
+2. **额外 SDK 回调**：除了 ntGameLoginSuccess()，可能还需要其他回调如角色选择、服务器选择等。
+3. **Native 层分析**：在 libGame.so 中寻找 splash→scene 的分支逻辑（Frida native hooks）。
+4. **Lua 脚本触发**：场景转换可能在 Lua 层控制，需要在 `@view/` 脚本中寻找触发点。
 
 **达到可玩需要**：
-1. ntGameLoginSuccess() 成功触发游戏场景转换
-2. 本地服务器返回正确格式的 shapeconfig 文件内容（而非 JSON stub）
-3. 补全 SdkController 剩余 JNI 入口方法
-4. 删除 INTERNET 权限 + 独立包名/签名
+1. 场景成功从 splash 切换到游戏主界面
+2. 本地服务器返回正确格式的资源文件
+3. 删除 INTERNET 权限 + 独立包名/签名
 
 ## 五、补丁清单
 

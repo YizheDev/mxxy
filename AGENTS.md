@@ -47,3 +47,7 @@
 | Frida getaddrinfo Interceptor.replace | 导致 SIGSEGV 崩溃 | 不要在 Frida 中完全替换 getaddrinfo，改用 Interceptor.attach |
 | libGame.so 二进制 URL patch | 替换字符串长度必须完全一致 | 短于原始值的 URL 用 \\x00 填充到相同长度 |
 | NeteaseBase.init() 中调用 setPropStr | String.substring(-1) 崩溃 | SdkNetease 重写了 setPropStr 做额外验证，init 阶段不可直接调用 |
+| `OnFinishInitListener.finishInit(I)` 写成 `onfinishInit(I)` | `NoSuchMethodError: No interface method onfinishInit(I)V` | 正确方法名是 `finishInit(I)V`，JADX 源码可确认 |
+| SdkController.init() 假设会被 native 调用 | init() 从未被调用，游戏卡 splash | 实际调用链是 SdkNetease.init() → SdkController 未参与此流程，应在此处触发 ntGameLoginSuccess |
+| 游戏在 ntGameLoginSuccess 后仍显示 splash | Messiah 引擎已启动但等待未知信号 | splash→scene 转换可能在 native/Lua 层，需要进一步分析引擎状态机 |
+| 模拟器 ANR 杀掉进程 | 启动超时导致 SIGKILL | v27 修复：SdkNetease.init() 中调用 ntGameLoginSuccess 阻止了 ANR，进程保持存活 |
