@@ -87,6 +87,13 @@ h3{color:#8af;font-size:14px;margin:15px 0 8px}
   <div><span class="p">icon/%04d.png</span> &mdash; 通用图标</div>
 </div>
 
+<!-- SECTION: Pet Data Schema -->
+<h2>宠物数据结构 (从 infobeast.lua 解码)</h2>
+<div class="info-box">
+  <h4>每个宠物包含以下 22 个字段</h4>
+</div>
+<div class="grid3" id="schemaGrid"></div>
+
 <!-- SECTION: Pet Keywords -->
 <h2>从Lua脚本中提取的宠物/战斗关键词</h2>
 <div class="tags" id="petTags"></div>
@@ -99,12 +106,9 @@ h3{color:#8af;font-size:14px;margin:15px 0 8px}
 <div class="warn-box">
   <h4>仍在加密中，需要进一步逆向</h4>
   <ul>
-    <li><b>宠物中文名称</b> — 存储在 WPK 容器的 <code>_g18RC4_</code> 加密条目中，需逐条用 RC4 keystream 解密</li>
-    <li><b>宠物属性 (HP/ATK/DEF/SPD)</b> — 同上，在 shapeconfig JSON 配置中</li>
-    <li><b>宠物头像 PNG</b> — msnonrepo_img_* 文件实际是角色动画数据(CHAR::ANIM)，头像可能在 WPK 其他条目</li>
-    <li><b>技能详细效果</b> — 在 Lua bytecode 脚本中，需要 Lua 反编译器</li>
-    <li><b>进化链完整数据</b> — 在 infoshapemapping 模块中，格式待逆向</li>
-    <li><b>装备/道具属性</b> — 在 res_item WPK 容器中</li>
+    <li><b>宠物中文名称 + 具体数值</b> — 数据结构已解码（22字段），实际值在 WPK <code>_g18RC4_</code> 加密条目中</li>
+    <li><b>宠物头像 PNG</b> — msnonrepo_img_* 文件实际是角色动画(CHAR::ANIM)，头像路径 photo/portrait/%04d 存在但图片未提取</li>
+    <li><b>装备/道具属性</b> — 在 res_item WPK 容器中，需要相同解密流程</li>
   </ul>
 </div>
 
@@ -133,6 +137,35 @@ h3{color:#8af;font-size:14px;margin:15px 0 8px}
 </div>
 
 <script>
+// === PET SCHEMA ===
+const schema = [
+  {n:"NAME_IDX",d:"宠物名称索引",cat:"基础"},
+  {n:"TYPE_IDX",d:"类型/属性索引",cat:"基础"},
+  {n:"RARE_IDX",d:"稀有度索引",cat:"基础"},
+  {n:"DESC_IDX",d:"描述文本索引",cat:"基础"},
+  {n:"ORDER_IDX",d:"排序/图鉴编号",cat:"基础"},
+  {n:"LIFE_IDX",d:"生命值",cat:"属性"},
+  {n:"MERIT_IDX",d:"资质总评",cat:"属性"},
+  {n:"FIGHT_GRADE_IDX",d:"战斗等级",cat:"属性"},
+  {n:"GROWUP_IDX",d:"成长值",cat:"属性"},
+  {n:"TZZZ_IDX",d:"体质资质",cat:"属性"},
+  {n:"WGZZ_IDX",d:"物攻资质",cat:"属性"},
+  {n:"FGZZ_IDX",d:"法攻资质",cat:"属性"},
+  {n:"WFZZ_IDX",d:"物防资质",cat:"属性"},
+  {n:"SDZZ_IDX",d:"速度资质",cat:"属性"},
+  {n:"BASE_SKILLS_IDX",d:"基础技能列表",cat:"技能"},
+  {n:"SKILLS_IDX",d:"可学技能列表",cat:"技能"},
+  {n:"BIND_SKILL_IDX",d:"绑定技能(必带)",cat:"技能"},
+  {n:"FROM_IDX",d:"进化来源/合成公式",cat:"进化"},
+  {n:"SUPERSUMMON_IDX",d:"超级召唤标识",cat:"特殊"},
+  {n:"UNIQUEDRUG_IDX",d:"专属内丹/丹药",cat:"特殊"},
+  {n:"BAODI1_IDX / BAODI2_IDX",d:"保底机制索引",cat:"特殊"},
+  {n:"BACK_GROUND_IDX",d:"背景图索引",cat:"UI"},
+];
+document.getElementById('schemaGrid').innerHTML = schema.map(s =>
+  `<div class="card"><h4>${s.n}</h4><p>${s.d}</p><p class="tag">${s.cat}</p></div>`
+).join('');
+
 // === PET DATA ===
 const pets = [
   {id:4,  portrait:"photo/portrait/4",    model:"3dshapes/0004", hasP:true,  hasM:true },

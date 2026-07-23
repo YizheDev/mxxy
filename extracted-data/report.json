@@ -1,0 +1,13 @@
+{
+  "total_unique_strings": 0,
+  "categories": {
+    "beast_pet": 0,
+    "skill": 0,
+    "item_equip": 0,
+    "game_features": 0
+  },
+  "sample_beast_pet": [],
+  "sample_skill": [],
+  "sample_item_equip": [],
+  "sample_game_features": []
+}
