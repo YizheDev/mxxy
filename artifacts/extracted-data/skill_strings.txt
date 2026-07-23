@@ -1,0 +1,9 @@
+LblSkillN
+SKILLFX
+SKILL_HIT_DELAY
+SkillNameEffec
+SkillNameWn
+aSKILLN
+aSkillT
+isWearSkillFxq
+rskillfx7
